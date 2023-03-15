@@ -42,16 +42,14 @@ public class VolunteerService {
     }
 
     public Volunteer updateVolunteer(int id, Volunteer updatedVolunteer) throws NoVolunteerFoundExceptions {
-        Volunteer volunteer = volunteerRepository.findById(id)
-                .orElseThrow(() -> new NoVolunteerFoundExceptions("Volunteer not found with ID: " + id));
-
-        volunteer.setName(updatedVolunteer.getName());
-        volunteer.setAge(updatedVolunteer.getAge());
-        volunteer.setEmail(updatedVolunteer.getEmail());
-        volunteer.setContact(updatedVolunteer.getContact());
-        volunteer.setEducation(updatedVolunteer.getEducation());
-        volunteer.setPastExperience(updatedVolunteer.getPastExperience());
-
-        return volunteerRepository.save(volunteer);
+        Optional<Volunteer> volunteer = volunteerRepository.findById(id);
+        if (volunteer.isPresent()) {
+            Volunteer existingVolunteer = volunteer.get();
+            existingVolunteer.setName(updatedVolunteer.getName());
+            existingVolunteer.setEmail(updatedVolunteer.getEmail());
+            return volunteerRepository.save(existingVolunteer);
+        } else {
+            throw new NoVolunteerFoundExceptions("Volunteer not found with ID: " + id);
+        }
     }
 }
