@@ -79,7 +79,7 @@ record Message(String message, boolean success){}
             return ResponseEntity.notFound().build();
         } catch (Exception ex) {
             ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Message("Unable to update volunteer",false));
+            return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
         }
     }
 
