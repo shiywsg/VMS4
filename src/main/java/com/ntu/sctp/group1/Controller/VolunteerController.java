@@ -84,7 +84,7 @@ record Message(String message, boolean success){}
     }
 
     @DeleteMapping("/volunteer/{id}")
-    public ResponseEntity deleteVolunteer(@PathVariable Integer id) {
+    public ResponseEntity deleteVolunteer(@PathVariable int id) {
       try {
           volunteerService.deleteVolunteer(id);
           return ResponseEntity.ok().body(new Message("Volunteer with ID " + id + " deleted" , true));

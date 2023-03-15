@@ -44,18 +44,20 @@ public class VolunteerService {
             throw new NoVolunteerFoundExceptions("No volunteers meeting this criteria found");
         }
         List<Volunteer> filteredList = new ArrayList<>();
+
         if (params.containsKey("experience")) {
             filteredList = volunteers.stream()
                             .filter((volunteer) -> volunteer.getEducation().equalsIgnoreCase(params.get("education")) ||
                                                    volunteer.getLanguage().equalsIgnoreCase(params.get("language")) ||
-                                                   volunteer.getPastExperience().contains(params.get("experience"))) 
+                                                   volunteer.getPastExperience().contains(params.get("experience")))
                             .toList();
         } else {
             filteredList = volunteers.stream()
                             .filter((volunteer) -> volunteer.getEducation().equalsIgnoreCase(params.get("education")) ||
-                                                   volunteer.getLanguage().equalsIgnoreCase(params.get("language"))) 
+                                                   volunteer.getLanguage().equalsIgnoreCase(params.get("language")))
                             .toList();
         }
+
         if(filteredList.size() == 0) {
             throw new NoVolunteerFoundExceptions("No results found!");
         }
@@ -82,7 +84,7 @@ public class VolunteerService {
         }
     }
 
-    public void deleteVolunteer(Integer id) throws NoVolunteerFoundExceptions {
+    public void deleteVolunteer(int id) throws NoVolunteerFoundExceptions {
     Optional<Volunteer> volunteer = volunteerRepository.findById(id);
         if (volunteer.isPresent()) {
             Volunteer existingVolunteer = volunteer.get();

@@ -44,7 +44,7 @@ import lombok.Setter;
             private String education = "";
 
             @Column(name = "language")
-            private String language;
+            private String language = "";
 
             @Column(name = "past_experience")
             private String pastExperience = "";
