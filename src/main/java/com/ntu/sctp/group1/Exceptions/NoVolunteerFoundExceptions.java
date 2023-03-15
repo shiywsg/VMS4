@@ -6,3 +6,4 @@ public class NoVolunteerFoundExceptions extends Exception{
         super(message);
     }
 }
+
