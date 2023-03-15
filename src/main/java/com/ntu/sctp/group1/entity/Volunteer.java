@@ -56,6 +56,6 @@ import lombok.Setter;
             private String referrerName = "";
 
             @Column(name = "referrer_contact")
-            private String referrerContact = "";
+            private Integer referrerContact;
 
 }

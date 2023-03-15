@@ -78,6 +78,16 @@ public class VolunteerService {
             Volunteer existingVolunteer = volunteer.get();
             existingVolunteer.setName(updatedVolunteer.getName());
             existingVolunteer.setEmail(updatedVolunteer.getEmail());
+            existingVolunteer.setContact(updatedVolunteer.getContact());
+            existingVolunteer.setEducation(updatedVolunteer.getEducation());
+            existingVolunteer.setLanguage(updatedVolunteer.getLanguage());
+            existingVolunteer.setPastExperience(updatedVolunteer.getPastExperience());
+            existingVolunteer.setAge(updatedVolunteer.getAge());
+            existingVolunteer.setReferrerName(updatedVolunteer.getReferrerName());
+            existingVolunteer.setReferrerContact(updatedVolunteer.getReferrerContact());
+
+            
+            
             return volunteerRepository.save(existingVolunteer);
         } else {
             throw new NoVolunteerFoundExceptions("Volunteer not found with ID: " + id);
