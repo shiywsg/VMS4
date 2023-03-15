@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/admin")
 public class VolunteerController {
@@ -40,18 +43,18 @@ record Message(String message, boolean success){}
         }
     }
 
-//    @GetMapping("/volunteers/search")
-//    public ResponseEntity<List<Volunteer>> searchByParams (@RequestParam Map<String, String> params) {
-//        try {
-//            return ResponseEntity.ok().body(volunteerService.searchByParams(params));
-//        } catch (NoVolunteerFoundExceptions ex) {
-//            ex.printStackTrace();
-//            return ResponseEntity.notFound().build();
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
-//        }
-//    }
+    @GetMapping("/volunteers/search")
+    public ResponseEntity<List<Volunteer>> searchByParams (@RequestParam Map<String, String> params) {
+        try {
+            return ResponseEntity.ok().body(volunteerService.searchByParams(params));
+        } catch (NoVolunteerFoundExceptions ex) {
+            ex.printStackTrace();
+            return ResponseEntity.notFound().build();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
 
    
 
