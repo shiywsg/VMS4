@@ -3,10 +3,6 @@ package com.ntu.sctp.group1.Controller;
 import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
 import com.ntu.sctp.group1.Service.VolunteerService;
 import com.ntu.sctp.group1.entity.Volunteer;
-
-import java.util.Map;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,18 +40,18 @@ record Message(String message, boolean success){}
         }
     }
 
-    @GetMapping("/volunteers/search")
-    public ResponseEntity<List<Volunteer>> searchByParams (@RequestParam Map<String, String> params) {
-        try {
-            return ResponseEntity.ok().body(volunteerService.searchByParams(params));
-        } catch (NoVolunteerFoundExceptions ex) {
-            ex.printStackTrace();
-            return ResponseEntity.notFound().build();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
-        }
-    }
+//    @GetMapping("/volunteers/search")
+//    public ResponseEntity<List<Volunteer>> searchByParams (@RequestParam Map<String, String> params) {
+//        try {
+//            return ResponseEntity.ok().body(volunteerService.searchByParams(params));
+//        } catch (NoVolunteerFoundExceptions ex) {
+//            ex.printStackTrace();
+//            return ResponseEntity.notFound().build();
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
+//        }
+//    }
 
    
 
@@ -86,16 +82,13 @@ record Message(String message, boolean success){}
 
     @DeleteMapping("/volunteer/{id}")
     public ResponseEntity deleteVolunteer(@PathVariable Integer id) {
-    try {
-        Volunteer volunteer = volunteerService.deleteVolunteer(id);
-        return ResponseEntity.ok().build();
-    } catch (NoVolunteerFoundExceptions ex) {
-        ex.printStackTrace();
-        return ResponseEntity.notFound().build();
-    } catch (Exception ex) {
-        ex.printStackTrace();
-        return ResponseEntity.badRequest().body(new Message("Unable to update volunteer",false));
-    }
+      try {
+          volunteerService.deleteVolunteer(id);
+          return ResponseEntity.ok().body(new Message("Volunteer with ID " + id + " deleted" , true));
+      } catch(NoVolunteerFoundExceptions ex) {
+          ex.printStackTrace();
+          return ResponseEntity.notFound().build();
+      }
     }
 
 }
