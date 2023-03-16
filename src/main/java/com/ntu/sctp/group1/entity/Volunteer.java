@@ -2,12 +2,9 @@ package com.ntu.sctp.group1.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,10 +24,9 @@ import lombok.Setter;
             @Column(name = "name", nullable = false)
             private String name;
 
-            // @NonNull
-            // @NotBlank(message = "Age cannot be blank!")
-            @Column(name = "age")
-            private Integer age;
+            //amend age to dateOfBirth
+            @Column(name = "date_of_birth")
+            private LocalDate dateOfBirth;
 
             @NonNull
             @NotBlank(message = "Email cannot be blank!")
@@ -38,7 +34,10 @@ import lombok.Setter;
             private String email;
 
             @Column(name = "contact")
-            private String contact;
+            private Integer contact;
+
+            @Column(name = "address")
+            private String address;
 
             @Column(name = "education")
             private String education = "";
@@ -58,4 +57,7 @@ import lombok.Setter;
             @Column(name = "referrer_contact")
             private Integer referrerContact;
 
+            @OneToOne(cascade = CascadeType.ALL)
+            @JoinColumn(name = "profile_id", referencedColumnName = "id")
+            private Profile profile;
 }
