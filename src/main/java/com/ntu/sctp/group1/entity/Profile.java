@@ -30,6 +30,10 @@ public class Profile {
     @Column(name = "profile_picture")
     private String profilePicture = "";
 
-    @OneToOne(mappedBy = "profile")
-    private Volunteer volunteer;
+//    @OneToOne(mappedBy = "profile")
+//    private Volunteer volunteer;
+
+    @OneToOne
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private Volunteer volunteer;;
 }

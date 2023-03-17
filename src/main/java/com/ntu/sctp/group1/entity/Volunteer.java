@@ -57,7 +57,10 @@ import java.time.LocalDate;
             @Column(name = "referrer_contact")
             private Integer referrerContact;
 
-            @OneToOne(cascade = CascadeType.ALL)
-            @JoinColumn(name = "profile_id", referencedColumnName = "id")
-            private Profile profile;
+//            @OneToOne(cascade = CascadeType.ALL)
+//            @JoinColumn(name = "profile_id", referencedColumnName = "id")
+//            private Profile profile;
+
+        @OneToOne(cascade = CascadeType.ALL)
+        private Profile profile;
 }
