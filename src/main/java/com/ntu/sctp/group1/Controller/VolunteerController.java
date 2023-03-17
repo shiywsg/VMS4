@@ -1,7 +1,10 @@
 package com.ntu.sctp.group1.Controller;
 
+import com.ntu.sctp.group1.Exceptions.NoProfileFoundExceptions;
 import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
+import com.ntu.sctp.group1.Service.ProfileService;
 import com.ntu.sctp.group1.Service.VolunteerService;
+import com.ntu.sctp.group1.entity.Profile;
 import com.ntu.sctp.group1.entity.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,9 @@ import java.util.Map;
 
     @Autowired
     VolunteerService volunteerService;
+
+    @Autowired
+    ProfileService profileService;
 
     record Message(String message, boolean success){}
 
@@ -92,5 +98,21 @@ import java.util.Map;
               ex.printStackTrace();
               return ResponseEntity.notFound().build();
           }
+        }
+
+
+        @GetMapping("/volunteers/profiles")
+        public ResponseEntity<?> getAllProfiles() {
+            try {
+                List<Profile> profiles = profileService.findAll();
+                return ResponseEntity.ok(profiles);
+            } catch (NoProfileFoundExceptions ex ) {
+                ex.printStackTrace();
+                return ResponseEntity.notFound().build();
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
+            } 
         }
     }
