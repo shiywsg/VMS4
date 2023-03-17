@@ -33,7 +33,7 @@ public class Profile {
 //    @OneToOne(mappedBy = "profile")
 //    private Volunteer volunteer;
 
-    @OneToOne(mappedBy = "profile", orphanRemoval = true)
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
-    private Volunteer volunteer;;
+    @OneToOne
+    @JoinColumn(name = "volunteer_id", referencedColumnName = "id")
+    private Volunteer volunteer;
 }

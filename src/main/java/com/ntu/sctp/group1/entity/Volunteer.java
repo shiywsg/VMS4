@@ -1,5 +1,6 @@
 package com.ntu.sctp.group1.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -19,7 +20,7 @@ import java.time.LocalDate;
 
             @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
-            private Long id;
+            private Integer id;
 
             @NonNull
             @NotBlank(message = "Name cannot be blank!")
@@ -63,8 +64,8 @@ import java.time.LocalDate;
 //            @OneToOne(cascade = CascadeType.ALL)
 //            @JoinColumn(name = "profile_id", referencedColumnName = "id")
 //            private Profile profile;
-
-        @OneToOne(cascade = CascadeType.ALL)
+//
+        @JsonIgnore
+        @OneToOne(mappedBy = "volunteer", cascade = CascadeType.ALL)
         private Profile profile;
-
 }

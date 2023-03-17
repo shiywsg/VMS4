@@ -1,6 +1,7 @@
 package com.ntu.sctp.group1.Service;
 
 import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
+import com.ntu.sctp.group1.entity.Profile;
 import com.ntu.sctp.group1.entity.Volunteer;
 import com.ntu.sctp.group1.repository.ProfileRepository;
 import com.ntu.sctp.group1.repository.VolunteerRepository;
@@ -16,12 +17,13 @@ import java.util.Optional;
 public class VolunteerService {
 
     @Autowired
-    
     VolunteerRepository volunteerRepository;
 
-
     @Autowired
-    private ProfileRepository profileRepository;
+    ProfileRepository profileRepository;
+
+
+
 
     public List<Volunteer> getAllVolunteers() throws NoVolunteerFoundExceptions {
         List<Volunteer> volunteers = volunteerRepository.findAll();
@@ -73,7 +75,15 @@ public class VolunteerService {
         if (newVolunteer.getName().isEmpty()) {
             throw new NoVolunteerFoundExceptions("Volunteer's name and email cannot be empty");
         }
-        return volunteerRepository.save(newVolunteer);
+        Volunteer newPerson = volunteerRepository.save(newVolunteer);
+        if(volunteerRepository.findById(newPerson.getId()).isEmpty()) {
+            throw new NoVolunteerFoundExceptions("Failed to save volunteer");
+        }
+
+        Profile newProfile = new Profile();
+        newProfile.setVolunteer(newPerson);
+        profileRepository.save(newProfile);
+        return newPerson;
     }
 
     public Volunteer updateVolunteer(int id, Volunteer updatedVolunteer) throws NoVolunteerFoundExceptions {
