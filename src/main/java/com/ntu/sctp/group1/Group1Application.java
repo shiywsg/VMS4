@@ -31,9 +31,15 @@ public class Group1Application {
 		volunteerRepository.save(person2);
 
 		Profile profile1 = new Profile();
-		Profile profile2 = new Profile();
-
+		profile1.setInterests("Photography, Travel");
+		profile1.setHobbies("Hiking, Reading");
+		profile1.setProfessionalExperience("Software Developer");
 		profile1.setVolunteer(person1);
+
+		Profile profile2 = new Profile();
+		profile2.setInterests("Sports, Music");
+		profile2.setHobbies("Basketball, Playing Guitar");
+		profile2.setProfessionalExperience("Graphic Designer");
 		profile2.setVolunteer(person2);
 
 		profileRepository.save(profile1);

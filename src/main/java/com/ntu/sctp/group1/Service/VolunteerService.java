@@ -2,6 +2,7 @@ package com.ntu.sctp.group1.Service;
 
 import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
 import com.ntu.sctp.group1.entity.Volunteer;
+import com.ntu.sctp.group1.repository.ProfileRepository;
 import com.ntu.sctp.group1.repository.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ public class VolunteerService {
     @Autowired
     
     VolunteerRepository volunteerRepository;
+
+
+    @Autowired
+    private ProfileRepository profileRepository;
 
     public List<Volunteer> getAllVolunteers() throws NoVolunteerFoundExceptions {
         List<Volunteer> volunteers = volunteerRepository.findAll();
@@ -77,6 +82,15 @@ public class VolunteerService {
             Volunteer existingVolunteer = volunteer.get();
             existingVolunteer.setName(updatedVolunteer.getName());
             existingVolunteer.setEmail(updatedVolunteer.getEmail());
+            existingVolunteer.setContact(updatedVolunteer.getContact());
+            existingVolunteer.setAddress(updatedVolunteer.getAddress());
+            existingVolunteer.setEducation(updatedVolunteer.getEducation());
+            existingVolunteer.setLanguage(updatedVolunteer.getLanguage());
+            existingVolunteer.setPastExperience(updatedVolunteer.getPastExperience());
+            existingVolunteer.setDateOfBirth(updatedVolunteer.getDateOfBirth());
+            existingVolunteer.setReferrerName(updatedVolunteer.getReferrerName());
+            existingVolunteer.setReferrerContact(updatedVolunteer.getReferrerContact());
+
             return volunteerRepository.save(existingVolunteer);
         } else {
             throw new NoVolunteerFoundExceptions("Volunteer not found with ID: " + id);
@@ -84,7 +98,7 @@ public class VolunteerService {
     }
 
     public void deleteVolunteer(int id) throws NoVolunteerFoundExceptions {
-    Optional<Volunteer> volunteer = volunteerRepository.findById(id);
+        Optional<Volunteer> volunteer = volunteerRepository.findById(id);
         if (volunteer.isPresent()) {
             Volunteer existingVolunteer = volunteer.get();
             volunteerRepository.delete(existingVolunteer);

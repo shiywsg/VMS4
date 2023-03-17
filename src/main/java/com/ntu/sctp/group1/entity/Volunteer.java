@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+
+import java.time.LocalDate;
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -22,10 +26,9 @@ import lombok.*;
             @Column(name = "name", nullable = false)
             private String name;
 
-            // @NonNull
-            // @NotBlank(message = "Age cannot be blank!")
-            @Column(name = "age")
-            private Integer age;
+            //amend age to dateOfBirth
+            @Column(name = "date_of_birth")
+            private LocalDate dateOfBirth;
 
             @NonNull
             @NotBlank(message = "Email cannot be blank!")
@@ -33,7 +36,10 @@ import lombok.*;
             private String email;
 
             @Column(name = "contact")
-            private String contact;
+            private Integer contact;
+
+            @Column(name = "address")
+            private String address;
 
             @Column(name = "education")
             private String education = "";
@@ -51,7 +57,14 @@ import lombok.*;
             private String referrerName = "";
 
             @Column(name = "referrer_contact")
-            private String referrerContact = "";
+            private Integer referrerContact;
 
+
+//            @OneToOne(cascade = CascadeType.ALL)
+//            @JoinColumn(name = "profile_id", referencedColumnName = "id")
+//            private Profile profile;
+
+        @OneToOne(cascade = CascadeType.ALL)
+        private Profile profile;
 
 }
