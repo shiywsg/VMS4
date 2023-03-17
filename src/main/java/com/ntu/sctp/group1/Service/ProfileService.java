@@ -33,20 +33,18 @@ public class ProfileService {
         return profile;
     }
 
-    public ProfileEditDto editProfile(Integer volunteerid, ProfileEditDto newVolunteerProfile)
+    public Profile editProfile(Integer volunteerid, ProfileEditDto newVolunteerProfile)
     throws NoProfileFoundExceptions{
-        // Optional<Profile> findProfile = profileRepository.findByVolunteerId(volunteerid);
-        // if (findProfile.isEmpty()){
-        //     throw new NoProfileFoundExceptions("now profile found");
-        // } 
-        // Profile exsitingProfile = findProfile.get();
-        // existingProfile.setHobbies(newVoluneteerProfile.getHobbies());
-        // existingProfile.setInterests(newVoluneteerProfile.getInterests());
-        // existingProfile.setProfessionalExperience(newVoluneteerProfile.getProfessionalExperience());
-        // exsitingProfile.setProfilePicture(newVoluneteerProfile.getProfilePicture());
+        Optional<Profile> findProfile = profileRepository.findByVolunteerId(volunteerid);
+        if (findProfile.isEmpty()){
+            throw new NoProfileFoundExceptions("now profile found");
+        } 
+        Profile existingProfile = findProfile.get();
+        existingProfile.setHobbies(newVolunteerProfile.getHobbies());
+        existingProfile.setInterests(newVolunteerProfile.getInterests());
+        existingProfile.setProfessionalExperience(newVolunteerProfile.getProfessionalExperience());
+        existingProfile.setProfilePicture(newVolunteerProfile.getProfilePicture());
 
-        return newVolunteerProfile;
-
-        // return profileRepository.save(existingProfile);
+        return profileRepository.save(existingProfile);
     }
 }
