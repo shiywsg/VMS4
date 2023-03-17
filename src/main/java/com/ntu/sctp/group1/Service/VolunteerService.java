@@ -44,7 +44,6 @@ public class VolunteerService {
             throw new NoVolunteerFoundExceptions("No volunteers meeting this criteria found");
         }
         List<Volunteer> filteredList = new ArrayList<>();
-
         if (params.containsKey("experience")) {
             filteredList = volunteers.stream()
                             .filter((volunteer) -> volunteer.getEducation().equalsIgnoreCase(params.get("education")) ||

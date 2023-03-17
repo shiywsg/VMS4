@@ -2,12 +2,7 @@ package com.ntu.sctp.group1.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -57,5 +52,6 @@ import lombok.Setter;
 
             @Column(name = "referrer_contact")
             private String referrerContact = "";
+
 
 }
