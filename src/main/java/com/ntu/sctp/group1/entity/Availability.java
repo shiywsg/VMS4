@@ -31,4 +31,6 @@ public class Availability {
     @ManyToOne
     @JoinColumn(name = "volunteer_id", referencedColumnName = "id")
     private Volunteer volunteer;
+
+
 }

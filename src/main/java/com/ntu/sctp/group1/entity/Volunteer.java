@@ -27,7 +27,6 @@ import java.util.List;
             @Column(name = "name", nullable = false)
             private String name;
 
-            //amend age to dateOfBirth
             @Column(name = "date_of_birth")
             private LocalDate dateOfBirth;
 
@@ -60,11 +59,6 @@ import java.util.List;
             @Column(name = "referrer_contact")
             private Integer referrerContact;
 
-
-//            @OneToOne(cascade = CascadeType.ALL)
-//            @JoinColumn(name = "profile_id", referencedColumnName = "id")
-//            private Profile profile;
-//
         @JsonIgnore
         @OneToOne(mappedBy = "volunteer", cascade = CascadeType.ALL)
         private Profile profile;

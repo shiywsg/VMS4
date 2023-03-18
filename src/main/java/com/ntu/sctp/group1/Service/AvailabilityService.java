@@ -1,5 +1,6 @@
 package com.ntu.sctp.group1.Service;
 
+import com.ntu.sctp.group1.Exceptions.NoAvailabilityFoundExceptions;
 import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
 import com.ntu.sctp.group1.entity.Availability;
 import com.ntu.sctp.group1.entity.Volunteer;
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AvailabilityService {
@@ -45,7 +48,37 @@ public class AvailabilityService {
     // 5. List<Volunteer> listOfVolunteers = filteredList.stream().map((item)-> item.getVolunteer()).toList();
     // 6. return listOfVolunteers;
 
+    public List<Volunteer> searchByDate(LocalDate date) throws NoAvailabilityFoundExceptions {
+        List<Availability> availabilities = availabilityRepo.findByDate(date);
+
+        if (availabilities.size() == 0) {
+            throw new NoAvailabilityFoundExceptions("No volunteers available on the given date");
+        }
+
+        List<Volunteer> volunteers = availabilities.stream()
+                .filter(Availability::isAvail)
+                .map(Availability::getVolunteer)
+                .collect(Collectors.toList());
+
+        if (volunteers.size() == 0) {
+            throw new NoAvailabilityFoundExceptions("No volunteers available on the given date");
+        }
+
+        return volunteers;
+    }
 
 
+    public void updateAvailability(Integer volunteerId, LocalDate date, boolean isAvail)
+            throws NoVolunteerFoundExceptions, NoAvailabilityFoundExceptions {
+        Volunteer volunteer = volunteerRepository.findById(volunteerId)
+                .orElseThrow(() -> new NoVolunteerFoundExceptions("No volunteer found with the given ID: " + volunteerId));
+
+        Availability availability = availabilityRepo.findByVolunteerAndDate(volunteer, date)
+                .orElseThrow(() -> new NoAvailabilityFoundExceptions("No availability record found for the given volunteer and date"));
+
+        availability.setAvail(isAvail);
+        availabilityRepo.save(availability);
+    }
 
 }
+

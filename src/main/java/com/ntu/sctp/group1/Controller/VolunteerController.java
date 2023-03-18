@@ -26,7 +26,7 @@ import java.util.Map;
     record Message(String message, boolean success){}
 
         @GetMapping("/volunteers")
-        public ResponseEntity getAllVolunteers() {
+        public ResponseEntity<?> getAllVolunteers() {
             try {
                 return ResponseEntity.ok().body(volunteerService.getAllVolunteers());
             } catch (NoVolunteerFoundExceptions ex) {
@@ -39,7 +39,7 @@ import java.util.Map;
         }
 
         @GetMapping("/volunteers/{id}")
-        public ResponseEntity getVolunteerById(@PathVariable int id) throws NoVolunteerFoundExceptions {
+        public ResponseEntity<?> getVolunteerById(@PathVariable int id) throws NoVolunteerFoundExceptions {
             try {
                 Volunteer volunteer = volunteerService.getVolunteerById(id);
                 return ResponseEntity.ok().body(volunteer);
@@ -65,7 +65,7 @@ import java.util.Map;
 
 
         @PostMapping("/newvolunteer")
-        public ResponseEntity createVolunteer(@RequestBody Volunteer newVolunteer) {
+        public ResponseEntity<?> createVolunteer(@RequestBody Volunteer newVolunteer) {
             try {
                 Volunteer volunteer = volunteerService.createVolunteer(newVolunteer);
                 return ResponseEntity.ok().body(volunteer);
@@ -76,7 +76,7 @@ import java.util.Map;
         }
 
         @PutMapping("/volunteers/{id}")
-        public ResponseEntity updateVolunteer(@PathVariable int id, @RequestBody Volunteer updatedVolunteer) {
+        public ResponseEntity<?> updateVolunteer(@PathVariable int id, @RequestBody Volunteer updatedVolunteer) {
             try {
                 Volunteer volunteer = volunteerService.updateVolunteer(id, updatedVolunteer);
                 return ResponseEntity.ok().body(volunteer);
@@ -89,8 +89,8 @@ import java.util.Map;
             }
         }
 
-        @DeleteMapping("/volunteer/{id}")
-        public ResponseEntity deleteVolunteer(@PathVariable int id) {
+        @DeleteMapping("/volunteers/{id}")
+        public ResponseEntity<?> deleteVolunteer(@PathVariable int id) {
           try {
               volunteerService.deleteVolunteer(id);
               return ResponseEntity.ok().body(new Message("Volunteer with ID " + id + " deleted" , true));
