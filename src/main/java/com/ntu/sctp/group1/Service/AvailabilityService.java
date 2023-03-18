@@ -34,4 +34,18 @@ public class AvailabilityService {
         return availabilityRepo.save(availDate);
     }
 
+    // Get list of volunteers for a specific date
+
+    // 1. Get the entire list of availabilities in the table
+    // 2. Filter thru the entire list, then match the date field with the date param
+    // 2a. Make sure to convert the date field and date param to same type for comparison
+    // 3. Filter list will return the list of Availabilities (id, date, volunteer)
+    // 4. Filtered list of availabilities based on search date, we map the volunteer
+    // to a new array
+    // 5. List<Volunteer> listOfVolunteers = filteredList.stream().map((item)-> item.getVolunteer()).toList();
+    // 6. return listOfVolunteers;
+
+
+
+
 }

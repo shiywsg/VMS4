@@ -27,6 +27,7 @@ public class Availability {
     @Column(name = "avail")
     private boolean avail;
 
+
     @ManyToOne
     @JoinColumn(name = "volunteer_id", referencedColumnName = "id")
     private Volunteer volunteer;
