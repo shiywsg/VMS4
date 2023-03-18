@@ -1,18 +1,13 @@
 package com.ntu.sctp.group1.entity;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
+import lombok.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.time.LocalDate;
 
+@ToString
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -25,9 +20,14 @@ public class Availability {
     @Id
     private Integer id;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "date")
-    private Date date = new Date();    
+    private LocalDate date;
 
     @Column(name = "avail")
     private boolean avail;
+
+    @ManyToOne
+    @JoinColumn(name = "volunteer_id", referencedColumnName = "id")
+    private Volunteer volunteer;
 }

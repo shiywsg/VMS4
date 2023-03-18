@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
-
 import java.time.LocalDate;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -68,4 +68,8 @@ import java.time.LocalDate;
         @JsonIgnore
         @OneToOne(mappedBy = "volunteer", cascade = CascadeType.ALL)
         private Profile profile;
+
+        @JsonIgnore
+        @OneToMany (mappedBy = "volunteer", cascade = CascadeType.ALL)
+        List<Availability> availabilities;
 }
