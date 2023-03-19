@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -29,6 +32,16 @@ public class Profile {
 
     @Column(name = "profile_picture")
     private String profilePicture = "";
+
+    @Column(name="created_at", updatable= false)
+    Timestamp createdAt = new Timestamp(new Date().getTime());
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
 
     @OneToOne
     @JoinColumn(name = "volunteer_id", referencedColumnName = "id")

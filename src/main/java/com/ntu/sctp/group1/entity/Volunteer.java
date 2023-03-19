@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 
@@ -58,6 +60,16 @@ import java.util.List;
 
             @Column(name = "referrer_contact")
             private Integer referrerContact;
+
+            @Column(name="created_at", updatable= false)
+            Timestamp createdAt = new Timestamp(new Date().getTime());
+
+            public Timestamp getCreatedAt() {
+                return createdAt;
+            }
+            public void setCreatedAt(Timestamp createdAt) {
+                this.createdAt = createdAt;
+            }
 
         @JsonIgnore
         @OneToOne(mappedBy = "volunteer", cascade = CascadeType.ALL)

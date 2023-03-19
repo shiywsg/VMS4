@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Date;
 
 @ToString
 @EqualsAndHashCode
@@ -27,10 +29,19 @@ public class Availability {
     @Column(name = "avail")
     private boolean avail;
 
+    @Column(name="created_at", updatable= false)
+    Timestamp createdAt = new Timestamp(new Date().getTime());
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
 
     @ManyToOne
     @JoinColumn(name = "volunteer_id", referencedColumnName = "id")
     private Volunteer volunteer;
-
 
 }
