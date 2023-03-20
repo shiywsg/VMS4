@@ -1,17 +1,27 @@
-<<<<<<< HEAD
-com/ntu/sctp/group1/Exceptions/NoAvailabilityFoundExceptions.class
+com/ntu/sctp/group1/DataTransferObject/ProfileEditDto.class
+com/ntu/sctp/group1/repository/AvailabilityRepository.class
 com/ntu/sctp/group1/Exceptions/NoProfileFoundExceptions.class
-com/ntu/sctp/group1/Group1Application$1.class
-=======
-com/ntu/sctp/group1/Exceptions/NoProfileFoundExceptions.class
->>>>>>> 9f25097be6250a0be6db0fdfe3aa0172b7bbb424
+com/ntu/sctp/group1/entity/Volunteer.class
 com/ntu/sctp/group1/Controller/ProfileController.class
 com/ntu/sctp/group1/Service/AvailabilityService.class
+com/ntu/sctp/group1/entity/Program.class
+com/ntu/sctp/group1/Exceptions/NoVolunteerFoundExceptions.class
 com/ntu/sctp/group1/Controller/ProfileController$Message.class
 com/ntu/sctp/group1/Controller/AvailabilityController.class
-<<<<<<< HEAD
-=======
+com/ntu/sctp/group1/Service/VolunteerService.class
+com/ntu/sctp/group1/entity/Enrolment.class
+com/ntu/sctp/group1/repository/LoginRepository.class
+com/ntu/sctp/group1/entity/Login.class
+com/ntu/sctp/group1/Group1Application.class
+com/ntu/sctp/group1/repository/VolunteerRepository.class
+com/ntu/sctp/group1/entity/Profile.class
 com/ntu/sctp/group1/Exceptions/NoAvailabilityFoundExceptions.class
->>>>>>> 9f25097be6250a0be6db0fdfe3aa0172b7bbb424
+com/ntu/sctp/group1/entity/Availability.class
+com/ntu/sctp/group1/Group1Application$1.class
 com/ntu/sctp/group1/Controller/AvailabilityController$Status.class
 com/ntu/sctp/group1/Service/ProfileService.class
+com/ntu/sctp/group1/repository/ProgramRepository.class
+com/ntu/sctp/group1/repository/ProfileRepository.class
+com/ntu/sctp/group1/Controller/VolunteerController.class
+com/ntu/sctp/group1/Controller/EnrolmentController.class
+com/ntu/sctp/group1/Controller/VolunteerController$Message.class
