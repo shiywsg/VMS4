@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 @AllArgsConstructor
@@ -80,4 +81,13 @@ import java.util.List;
         @JsonIgnore
         @OneToMany (mappedBy = "volunteer", cascade = CascadeType.ALL)
         List<Availability> availabilities;
+
+        @JsonIgnore
+        @ManyToMany 
+        @JoinTable(
+            name = "enrolment_volunteer",
+            joinColumns = @JoinColumn(name = "volunteer_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "enrolment_id", referencedColumnName = "id")
+        )
+        private Set<Enrolment> enrolments;
 }
