@@ -1,5 +1,6 @@
 com/ntu/sctp/group1/Exceptions/NoAvailabilityFoundExceptions.class
 com/ntu/sctp/group1/Exceptions/NoProfileFoundExceptions.class
+com/ntu/sctp/group1/Group1Application$1.class
 com/ntu/sctp/group1/Controller/ProfileController.class
 com/ntu/sctp/group1/Service/AvailabilityService.class
 com/ntu/sctp/group1/Controller/ProfileController$Message.class

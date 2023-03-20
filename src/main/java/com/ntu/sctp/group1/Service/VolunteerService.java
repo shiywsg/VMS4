@@ -21,10 +21,7 @@ public class VolunteerService {
 
     @Autowired
     ProfileRepository profileRepository;
-
-
-
-
+    
     public List<Volunteer> getAllVolunteers() throws NoVolunteerFoundExceptions {
         List<Volunteer> volunteers = volunteerRepository.findAll();
         if (volunteers.isEmpty()) {
@@ -75,6 +72,8 @@ public class VolunteerService {
         if (newVolunteer.getName().isEmpty()) {
             throw new NoVolunteerFoundExceptions("Volunteer's name and email cannot be empty");
         }
+//        LocalDate dateOfBirth = LocalDate.parse(newVolunteer.getDateOfBirth().toString());
+//        newVolunteer.setDateOfBirth(dateOfBirth);
         Volunteer newPerson = volunteerRepository.save(newVolunteer);
         if(volunteerRepository.findById(newPerson.getId()).isEmpty()) {
             throw new NoVolunteerFoundExceptions("Failed to save volunteer");

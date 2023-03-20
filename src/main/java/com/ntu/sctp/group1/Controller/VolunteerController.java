@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+    @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
     @RestController
     @RequestMapping("/admin")
     public class VolunteerController {
@@ -64,7 +65,7 @@ import java.util.Map;
 
 
 
-        @PostMapping("/newvolunteer")
+            @PostMapping("/newvolunteer")
         public ResponseEntity<?> createVolunteer(@RequestBody Volunteer newVolunteer) {
             try {
                 Volunteer volunteer = volunteerService.createVolunteer(newVolunteer);
