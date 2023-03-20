@@ -1,5 +1,6 @@
 package com.ntu.sctp.group1.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -30,6 +31,7 @@ import java.util.Set;
             @Column(name = "name", nullable = false)
             private String name;
 
+            @JsonFormat(pattern = "yyyy-MM-dd")
             @Column(name = "date_of_birth")
             private LocalDate dateOfBirth;
 
@@ -60,7 +62,7 @@ import java.util.Set;
             private String referrerName = "";
 
             @Column(name = "referrer_contact")
-            private Integer referrerContact;
+            private Long referrerContact;
 
             @Column(name="created_at", updatable= false)
             Timestamp createdAt = new Timestamp(new Date().getTime());
