@@ -8,9 +8,9 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name="programme")
+@Table(name = "programme")
 public class Programme {
-    
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
@@ -18,11 +18,11 @@ public class Programme {
     @Column(name = "name")
     private String name = "";
 
-    @Column(name = "day")
-    private String day = "";
+    @Column(name = "dayOfTheWeek")
+    private String dayOfTheWeek = "";
 
-    @Column(name = "time")
-    private String time = "";
+    @Column(name = "timing")
+    private String timing = "";
 
     @Column(name = "number_of_volunteers")
     private Integer noOfVolunteers;
