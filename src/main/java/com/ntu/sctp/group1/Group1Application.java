@@ -68,6 +68,6 @@ public class Group1Application {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**").allowedOrigins("http://localhost:3000");
 			}
-		}
+		};
 	}
 }
