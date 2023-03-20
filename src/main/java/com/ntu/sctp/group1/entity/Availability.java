@@ -39,7 +39,7 @@ public class Availability {
         this.createdAt = createdAt;
     }
 
-
+    
     @ManyToOne
     @JoinColumn(name = "volunteer_id", referencedColumnName = "id")
     private Volunteer volunteer;
