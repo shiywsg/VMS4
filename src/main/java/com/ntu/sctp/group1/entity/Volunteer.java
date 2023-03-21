@@ -52,6 +52,12 @@ import java.util.Set;
             @Column(name = "language")
             private String language = "";
 
+            @Column(name = "language2")
+            private String language2 = "";
+
+            @Column(name = "language3")
+            private String language3 = "";
+
             @Column(name = "past_experience")
             private String pastExperience = "";
 
