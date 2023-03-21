@@ -28,11 +28,11 @@ public class Program {
     @Column(name = "time_of_program")
     private String timeOfProgram;
 
-    @Column(name = "number_of_volunteers")
-    private Integer noOfVolunteers;
-
     @Column(name = "volunteers_required")
     private Integer volunteersRequired;
+
+    @Column(name = "number_of_volunteers")
+    private Integer noOfVolunteers;
 
     @Column(name="created_at", updatable= false)
     Timestamp createdAt = new Timestamp(new Date().getTime());
