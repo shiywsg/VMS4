@@ -44,6 +44,9 @@ import java.util.Map;
             try {
                 Volunteer volunteer = volunteerService.getVolunteerById(id);
                 return ResponseEntity.ok().body(volunteer);
+            } catch (NoVolunteerFoundExceptions ex) {
+                ex.printStackTrace();
+                return ResponseEntity.notFound().build();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
@@ -70,6 +73,9 @@ import java.util.Map;
             try {
                 Volunteer volunteer = volunteerService.createVolunteer(newVolunteer);
                 return ResponseEntity.ok().body(volunteer);
+            } catch (NoVolunteerFoundExceptions ex) {
+                ex.printStackTrace();
+                return ResponseEntity.notFound().build();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
@@ -98,6 +104,9 @@ import java.util.Map;
           } catch(NoVolunteerFoundExceptions ex) {
               ex.printStackTrace();
               return ResponseEntity.notFound().build();
+          }catch (Exception ex) {
+              ex.printStackTrace();
+              return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
           }
         }
 

@@ -5,7 +5,6 @@ import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
 import com.ntu.sctp.group1.Service.AvailabilityService;
 import com.ntu.sctp.group1.entity.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,13 +60,11 @@ public class AvailabilityController {
             return ResponseEntity.ok().body(new Status("Availability updated successfully", true));
         } catch (NoVolunteerFoundExceptions ex) {
             ex.printStackTrace();
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Status("No volunteer found with the given ID: " + volunteerId, false));
-        } catch (NoAvailabilityFoundExceptions ex) {
-            ex.printStackTrace();
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Status("No availability record found for the given volunteer and date", false));
+            return ResponseEntity.notFound().build();
         } catch (Exception ex) {
             ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Status("Error updating availability", false));
+            return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));
         }
     }
+
 }
