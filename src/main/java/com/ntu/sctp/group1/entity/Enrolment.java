@@ -22,9 +22,11 @@ public class Enrolment {
     @Id
     private Integer id;
 
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    @Column(name = "date")
-    private LocalDate date;
+    @Column(name = "day_of_program")
+    private String dayOfProgram;
+
+    @Column(name = "time_of_program")
+    private String timeOfProgram;
 
     @OneToOne
     @JoinColumn(name = "program_id")

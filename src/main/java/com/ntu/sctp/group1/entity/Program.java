@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 @NoArgsConstructor
 @Setter
 @Getter
@@ -25,13 +28,19 @@ public class Program {
     @Column(name = "time_of_program")
     private String timeOfProgram;
 
-    @Column(name = "number_of_volunteers")
-    private Integer noOfVolunteers;
-
     @Column(name = "volunteers_required")
     private Integer volunteersRequired;
 
-    public boolean isEmpty() {
-        return false;
+    @Column(name = "number_of_volunteers")
+    private Integer noOfVolunteers;
+
+    @Column(name="created_at", updatable= false)
+    Timestamp createdAt = new Timestamp(new Date().getTime());
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 }
