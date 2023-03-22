@@ -6,14 +6,18 @@
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Program.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/AvailabilityRepository.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Security/SecurityConfigurationFilterChain.java
+/Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/InvalidUidException.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/ProfileController.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/ProfileRepository.java
+/Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/DataTransferObject/UserSignInDto.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/AvailabilityController.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoVolunteerFoundExceptions.java
+/Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Service/UserService.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Role.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/UserCredentials.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/UserRepository.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/ProgramRepository.java
+/Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/DataTransferObject/UidDto.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Login.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/VolunteerRepository.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Profile.java
@@ -24,6 +28,7 @@
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Availability.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoProfileFoundExceptions.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/VolunteerController.java
+/Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/UserController.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoAvailabilityFoundExceptions.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Security/FirebaseFilter.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Service/ProfileService.java

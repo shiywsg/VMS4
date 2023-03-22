@@ -31,6 +31,7 @@ public class VolunteerService {
 
     
     public List<Volunteer> getAllVolunteers() throws NoVolunteerFoundExceptions {
+
         List<Volunteer> volunteers = volunteerRepository.findAll();
         if (volunteers.isEmpty()) {
              throw new NoVolunteerFoundExceptions("No Volunteer Found!");
@@ -131,4 +132,6 @@ public class VolunteerService {
             throw new NoVolunteerFoundExceptions("Volunteer not found with ID: " + id);
         }
     }
+
+
 }

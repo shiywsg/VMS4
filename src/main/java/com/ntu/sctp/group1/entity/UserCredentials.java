@@ -25,13 +25,13 @@ public class UserCredentials implements UserDetails {
     private Integer id;
 
     @Column(name = "username")
-    private String username;
+    private String username; // email
 
     @Column(name = "uid")
-    private String uid;
+    private String uid; // uid from firebase
 
     @Column(name = "token_active")
-    private boolean tokenIsActive;
+    private boolean tokenIsActive; // for logging out and signing in
 
     @Column(name = "volunteer_id")
     private Integer volunteerId;
