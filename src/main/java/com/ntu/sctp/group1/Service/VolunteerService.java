@@ -2,8 +2,11 @@ package com.ntu.sctp.group1.Service;
 
 import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
 import com.ntu.sctp.group1.entity.Profile;
+import com.ntu.sctp.group1.entity.Role;
+import com.ntu.sctp.group1.entity.UserCredentials;
 import com.ntu.sctp.group1.entity.Volunteer;
 import com.ntu.sctp.group1.repository.ProfileRepository;
+import com.ntu.sctp.group1.repository.UserRepository;
 import com.ntu.sctp.group1.repository.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,11 @@ public class VolunteerService {
 
     @Autowired
     ProfileRepository profileRepository;
+
+    @Autowired
+    UserRepository userRepo;
+
+
     
     public List<Volunteer> getAllVolunteers() throws NoVolunteerFoundExceptions {
         List<Volunteer> volunteers = volunteerRepository.findAll();
@@ -68,7 +76,7 @@ public class VolunteerService {
         return filteredList;
     }
 
-    public Volunteer createVolunteer(Volunteer newVolunteer) throws NoVolunteerFoundExceptions {
+    public Volunteer createVolunteer(Volunteer newVolunteer, String uid) throws NoVolunteerFoundExceptions {
         if (newVolunteer.getName().isEmpty()) {
             throw new NoVolunteerFoundExceptions("Volunteer's name and email cannot be empty");
         }
@@ -78,6 +86,14 @@ public class VolunteerService {
         if(volunteerRepository.findById(newPerson.getId()).isEmpty()) {
             throw new NoVolunteerFoundExceptions("Failed to save volunteer");
         }
+
+        UserCredentials user = new UserCredentials();
+        user.setVolunteerId(newPerson.getId());
+        user.setUsername(newPerson.getEmail());
+        user.setUid(uid);
+        user.setTokenIsActive(false);
+        user.setRole(Role.USER);
+        userRepo.save(user);
 
         Profile newProfile = new Profile();
         newProfile.setVolunteer(newPerson);

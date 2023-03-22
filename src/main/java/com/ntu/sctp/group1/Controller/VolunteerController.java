@@ -64,18 +64,6 @@ import java.util.Map;
         }
 
 
-
-            @PostMapping("/newvolunteer")
-        public ResponseEntity<?> createVolunteer(@RequestBody Volunteer newVolunteer) {
-            try {
-                Volunteer volunteer = volunteerService.createVolunteer(newVolunteer);
-                return ResponseEntity.ok().body(volunteer);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
-            }
-        }
-
         @PutMapping("/volunteers/{id}")
         public ResponseEntity<?> updateVolunteer(@PathVariable int id, @RequestBody Volunteer updatedVolunteer) {
             try {
