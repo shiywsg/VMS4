@@ -36,9 +36,9 @@ import java.util.Map;
             } catch (Exception ex) {
                 ex.printStackTrace();
                 return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
-            }
+            } 
         }
-
+ 
         @GetMapping("/volunteers/{id}")
         public ResponseEntity<?> getVolunteerById(@PathVariable int id) throws NoVolunteerFoundExceptions {
             try {

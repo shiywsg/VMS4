@@ -30,4 +30,8 @@ public class Program {
 
     @Column(name = "volunteers_required")
     private Integer volunteersRequired;
+
+    public boolean isEmpty() {
+        return false;
+    }
 }

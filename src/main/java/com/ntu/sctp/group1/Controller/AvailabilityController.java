@@ -13,13 +13,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
-@RestController
+@RestController 
 @RequestMapping("/volunteers/availability")
 public class AvailabilityController {
 
     @Autowired
     AvailabilityService availabilityService;
-
 
     record Status(String msg, boolean success){};
 

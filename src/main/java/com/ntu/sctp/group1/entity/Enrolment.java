@@ -26,9 +26,9 @@ public class Enrolment {
     @Column(name = "date")
     private LocalDate date;
 
-    // @OneToOne
-    // @JoinColumn(name = "programme_id")
-    // private Programme programme;
+    @OneToOne
+    @JoinColumn(name = "program_id")
+    private Program program;
 
     @ManyToMany
     @JoinTable(name = "enrolment_volunteer", joinColumns = @JoinColumn(name = "enrolment_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "volunteer_id", referencedColumnName = "id"))
