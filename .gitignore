@@ -34,4 +34,4 @@ build/
 ### VS Code ###
 .vscode/
 
-**/src/main/resources/service-account.json
+service-account.json
