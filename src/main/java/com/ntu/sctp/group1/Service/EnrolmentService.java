@@ -86,4 +86,15 @@ public class EnrolmentService {
         Set<Volunteer> volunteers = enrolmentFound.getVolunteers();
         return new ArrayList<>(volunteers);
     }
+
+    public void deleteEnrolment(Integer id) throws NoEnrolmentFoundExceptions {
+        Optional<Enrolment> enrolment = enrolmentRepository.findById(id);
+        if (enrolment.isPresent()) {
+            Enrolment existingEnrolment = enrolment.get();
+            enrolmentRepository.delete(existingEnrolment);
+        } else {
+            throw new NoEnrolmentFoundExceptions("Enrolment not found with id: " + id);
+        }
+    }
+
 }

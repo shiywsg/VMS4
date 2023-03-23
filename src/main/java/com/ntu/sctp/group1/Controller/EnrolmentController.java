@@ -82,4 +82,18 @@ public class EnrolmentController {
             return ResponseEntity.badRequest().body(new Status(ex.getMessage(),false));
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteEnrolment(@PathVariable Integer id) {
+        try {
+            enrolmentService.deleteEnrolment(id);
+            return ResponseEntity.ok(new Status("Enrolment with ID " + id + " deleted successfully", true));
+        } catch (NoEnrolmentFoundExceptions ex) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));
+        }
+    }
+
 }

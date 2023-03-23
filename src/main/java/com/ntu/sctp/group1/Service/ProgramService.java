@@ -79,9 +79,18 @@ public class ProgramService {
         Optional<Program> program = programRepository.findById(id);
         if (program.isPresent()) {
             Program existingProgram = program.get();
+            // Find the associated enrolment
+            Optional<Enrolment> enrolment = enrolmentRepository.findByProgramId(id);
+            // If an enrolment is found, delete it
+            if (enrolment.isPresent()) {
+                enrolmentRepository.delete(enrolment.get());
+            }
+            // Delete the program
             programRepository.delete(existingProgram);
         } else {
             throw new NoProgramFoundExceptions("Program not found with id: " + id);
         }
     }
+
+
 }
