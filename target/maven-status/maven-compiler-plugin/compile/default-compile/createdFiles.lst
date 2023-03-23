@@ -1,8 +1,10 @@
+com/ntu/sctp/group1/DataTransferObject/EnrolDto.class
 com/ntu/sctp/group1/DataTransferObject/ProfileEditDto.class
 com/ntu/sctp/group1/repository/AvailabilityRepository.class
 com/ntu/sctp/group1/Exceptions/NoProfileFoundExceptions.class
 com/ntu/sctp/group1/Exceptions/NoProgramFoundExceptions.class
 com/ntu/sctp/group1/entity/Volunteer.class
+com/ntu/sctp/group1/DataTransferObject/EnrolEditDto.class
 com/ntu/sctp/group1/Controller/ProfileController.class
 com/ntu/sctp/group1/Service/AvailabilityService.class
 com/ntu/sctp/group1/entity/Program.class

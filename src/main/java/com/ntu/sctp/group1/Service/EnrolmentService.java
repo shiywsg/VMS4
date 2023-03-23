@@ -1,24 +1,23 @@
 package com.ntu.sctp.group1.Service;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.ntu.sctp.group1.DataTransferObject.EnrolDto;
+import com.ntu.sctp.group1.DataTransferObject.EnrolEditDto;
 import com.ntu.sctp.group1.Exceptions.NoEnrolmentFoundExceptions;
+import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
 import com.ntu.sctp.group1.entity.Enrolment;
 import com.ntu.sctp.group1.entity.Program;
 import com.ntu.sctp.group1.entity.Volunteer;
 import com.ntu.sctp.group1.repository.EnrolmentRepository;
-import com.ntu.sctp.group1.repository.VolunteerRepository;
 import com.ntu.sctp.group1.repository.ProgramRepository;
+import com.ntu.sctp.group1.repository.VolunteerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.*;
 
 @Service
 public class EnrolmentService {
-    
+
     @Autowired
     EnrolmentRepository enrolmentRepository;
 
@@ -31,52 +30,61 @@ public class EnrolmentService {
     public List<Enrolment> getAllEnrolments() throws NoEnrolmentFoundExceptions {
         List<Enrolment> enrolment = enrolmentRepository.findAll();
         if (enrolment.isEmpty()) {
-             throw new NoEnrolmentFoundExceptions("No enrolments found");
+            throw new NoEnrolmentFoundExceptions("No enrolments found");
         } else {
             return enrolment;
         }
     }
 
-    public Enrolment createEnrolment(String day, String time, Program program, Set<Volunteer> volunteers) throws NoEnrolmentFoundExceptions {
-        if (program == null) {
-            throw new NoEnrolmentFoundExceptions("Program cannot be null");
-        }
-        if (volunteers == null || volunteers.isEmpty()) {
-            throw new NoEnrolmentFoundExceptions("At least one volunteer is required");
-        }
-        // Add any additional validation logic here
-
+    public Enrolment createEnrolment(EnrolDto enrolDto) throws NoEnrolmentFoundExceptions {
         Enrolment enrolment = new Enrolment();
-        enrolment.setDayOfProgram(day);
-        enrolment.setTimeOfProgram(time);
-        enrolment.setProgram(program);
+        Optional<Program> findProgram = programRepository.findById(enrolDto.getProgram_id());
+        if (findProgram.isEmpty()) {
+            throw new NoEnrolmentFoundExceptions("No program with this ID found");
+        }
+        enrolment.setProgram(findProgram.get());
+        enrolment.setTimeOfProgram(enrolDto.getTimeOfProgram());
+        enrolment.setDayOfProgram(enrolDto.getDayOfProgram());
+        Set<Volunteer> volunteers = new HashSet<>();
         enrolment.setVolunteers(volunteers);
-
         return enrolmentRepository.save(enrolment);
+
     }
 
-    // public Enrolment createEnrolment(String date, Integer programid) throws NoEnrolmentFoundExceptions {
-    //     Optional<Program> findProgram = programRepository.findById(programid);
-    //     if(findProgram.isEmpty()) {
-    //         throw new NoEnrolmentFoundExceptions("No program with this ID found");
-    //     }
-    //     Enrolment programDate = new Enrolment();
-    //     programDate.setDate(LocalDate.parse(date));
-        
-    //     return enrolmentRepository.save(programDate);
-    // }
+    public Enrolment updateEnrolment(EnrolEditDto enrolEditDto) throws NoEnrolmentFoundExceptions {
 
-    public Enrolment updateEnrolment(Integer id, Enrolment updatedEnrolment) throws NoEnrolmentFoundExceptions {
-        Optional<Enrolment> enrolment = enrolmentRepository.findById(id);
-        if (enrolment.isPresent()) {
-            Enrolment existingEnrolment = enrolment.get();
-            existingEnrolment.setDayOfProgram(updatedEnrolment.getDayOfProgram());
-            existingEnrolment.setTimeOfProgram(updatedEnrolment.getTimeOfProgram());
-            existingEnrolment.setProgram(updatedEnrolment.getProgram());
-    
-            return enrolmentRepository.save(existingEnrolment);
-        } else {
-            throw new NoEnrolmentFoundExceptions("Enrolment not found with ID: " + id);
+        Optional<Enrolment> findEnrolment = enrolmentRepository.findById(enrolEditDto.getId());
+        System.out.println(enrolEditDto.getId());
+        if (findEnrolment.isEmpty()) {
+            throw new NoEnrolmentFoundExceptions("No enrolment with this ID found");
         }
+        Enrolment enrolmentFound = findEnrolment.get();
+        enrolmentFound.setDayOfProgram(enrolEditDto.getDayOfProgram());
+        enrolmentFound.setTimeOfProgram(enrolEditDto.getTimeOfProgram());
+        return enrolmentRepository.save(enrolmentFound);
+    }
+
+    public void addVolunteer(int volunteer_id, int program_id) throws NoVolunteerFoundExceptions, NoEnrolmentFoundExceptions {
+        Optional<Volunteer> volunteer = volunteerRepository.findById(volunteer_id);
+        if (volunteer.isEmpty()) {
+            throw new NoVolunteerFoundExceptions("No volunteer found");
+    } Optional<Enrolment> enrolment = enrolmentRepository.findByProgramId(program_id);
+        if (enrolment.isEmpty()) {
+            throw new NoEnrolmentFoundExceptions("No enrolment found");
+    }
+        Enrolment enrolmentFound = enrolment.get();
+        enrolmentFound.getVolunteers().add(volunteer.get());
+        enrolmentRepository.save(enrolmentFound);
+    }
+
+    public List<Volunteer> getAllVolunteer(int program_id) throws NoEnrolmentFoundExceptions{
+        Optional<Enrolment> enrolment = enrolmentRepository.findByProgramId(program_id);
+        if (enrolment.isEmpty()) {
+            throw new NoEnrolmentFoundExceptions("No program found");
+    }
+        //Convert to a array list
+        Enrolment enrolmentFound = enrolment.get();
+        Set<Volunteer> volunteers = enrolmentFound.getVolunteers();
+        return new ArrayList<>(volunteers);
     }
 }
