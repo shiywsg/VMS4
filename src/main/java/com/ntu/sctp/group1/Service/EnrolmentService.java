@@ -44,11 +44,10 @@ public class EnrolmentService {
         }
         enrolment.setProgram(findProgram.get());
         enrolment.setTimeOfProgram(enrolDto.getTimeOfProgram());
-        enrolment.setDayOfProgram(enrolDto.getDayOfProgram());
+        enrolment.setDate(enrolDto.getDate());
         Set<Volunteer> volunteers = new HashSet<>();
         enrolment.setVolunteers(volunteers);
         return enrolmentRepository.save(enrolment);
-
     }
 
     public Enrolment updateEnrolment(EnrolEditDto enrolEditDto) throws NoEnrolmentFoundExceptions {
@@ -59,7 +58,7 @@ public class EnrolmentService {
             throw new NoEnrolmentFoundExceptions("No enrolment with this ID found");
         }
         Enrolment enrolmentFound = findEnrolment.get();
-        enrolmentFound.setDayOfProgram(enrolEditDto.getDayOfProgram());
+        enrolmentFound.setDate(enrolEditDto.getDate());
         enrolmentFound.setTimeOfProgram(enrolEditDto.getTimeOfProgram());
         return enrolmentRepository.save(enrolmentFound);
     }

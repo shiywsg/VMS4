@@ -1,5 +1,6 @@
 package com.ntu.sctp.group1.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -21,8 +23,9 @@ public class Enrolment {
     @Id
     private Integer id;
 
-    @Column(name = "day_of_program")
-    private String dayOfProgram;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @Column(name = "date")
+    private LocalDate date;
 
     @Column(name = "time_of_program")
     private String timeOfProgram;

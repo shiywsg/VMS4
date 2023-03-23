@@ -1,11 +1,13 @@
 package com.ntu.sctp.group1.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -22,8 +24,9 @@ public class Program {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "day_of_program")
-    private String dayOfProgram;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @Column(name = "date")
+    private LocalDate date;
 
     @Column(name = "time_of_program")
     private String timeOfProgram;

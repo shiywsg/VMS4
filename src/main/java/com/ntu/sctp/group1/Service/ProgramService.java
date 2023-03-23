@@ -1,11 +1,14 @@
 package com.ntu.sctp.group1.Service;
 
 import com.ntu.sctp.group1.Exceptions.NoProgramFoundExceptions;
+import com.ntu.sctp.group1.entity.Enrolment;
 import com.ntu.sctp.group1.entity.Program;
+import com.ntu.sctp.group1.repository.EnrolmentRepository;
 import com.ntu.sctp.group1.repository.ProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +17,9 @@ public class ProgramService {
 
     @Autowired
     ProgramRepository programRepository;
+
+    @Autowired
+    EnrolmentRepository enrolmentRepository;
 
     public List<Program> getAllPrograms() throws NoProgramFoundExceptions {
         List<Program> programs = programRepository.findAll();
@@ -38,7 +44,17 @@ public class ProgramService {
         if (program.getName().isEmpty()) {
             throw new NoProgramFoundExceptions("Program name cannot be empty");
         }
-        return programRepository.save(program);
+        Program savedProgram = programRepository.save(program);
+
+        // Create an empty Enrolment associated with the saved program
+        Enrolment enrolment = new Enrolment();
+        enrolment.setProgram(savedProgram);
+        enrolment.setDate(null);
+        enrolment.setTimeOfProgram("");
+        enrolment.setVolunteers(new HashSet<>());
+        enrolmentRepository.save(enrolment);
+
+        return savedProgram;
     }
 
     public Program updateProgram(Integer id, Program updatedProgram) throws NoProgramFoundExceptions {
@@ -47,7 +63,7 @@ public class ProgramService {
         if (findProgram.isPresent()) {
             Program existingProgram = findProgram.get();
             existingProgram.setName(updatedProgram.getName());
-            existingProgram.setDayOfProgram(updatedProgram.getDayOfProgram());
+            existingProgram.setDate(updatedProgram.getDate());
             existingProgram.setTimeOfProgram(updatedProgram.getTimeOfProgram());
             existingProgram.setNoOfVolunteers(updatedProgram.getNoOfVolunteers());
             existingProgram.setVolunteersRequired(updatedProgram.getVolunteersRequired());
