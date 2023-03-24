@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @RestController
-@RequestMapping("/admin")
+@RequestMapping
 public class ProgramController {
 
     @Autowired
@@ -18,7 +18,7 @@ public class ProgramController {
 
     record Message(String message, boolean success){}
 
-    @GetMapping("/programs")
+    @GetMapping("/admin/programs")
     public ResponseEntity<?> getAllVolunteers() {
         try {
             return ResponseEntity.ok().body(programService.getAllPrograms());
@@ -31,7 +31,7 @@ public class ProgramController {
         }
     }
 
-    @GetMapping("/programs/{id}")
+    @GetMapping("/admin/programs/{id}")
     public ResponseEntity<?> getProgramById(@PathVariable Integer id) {
         try {
             Program program = programService.getProgramById(id);
@@ -44,7 +44,7 @@ public class ProgramController {
         }
     }
 
-    @PostMapping("/newprogram")
+    @PostMapping("/admin/newprogram")
     public ResponseEntity<?> createProgram(@RequestBody Program newProgram) {
         try {
             Program program = programService.createProgram(newProgram);
@@ -57,7 +57,7 @@ public class ProgramController {
         }
     }
 
-    @PutMapping("/programs/{id}")
+    @PutMapping("/admin/programs/{id}")
     public ResponseEntity<?> updateProgram(@PathVariable Integer id, @RequestBody Program updatedProgram) {
         try {
             Program program = programService.updateProgram(id, updatedProgram);
@@ -70,7 +70,7 @@ public class ProgramController {
         }
     }
 
-    @DeleteMapping("/programs/{id}")
+    @DeleteMapping("/admin/programs/{id}")
     public ResponseEntity<?> deleteProgram(@PathVariable Integer id) {
         try {
             programService.deleteProgram(id);

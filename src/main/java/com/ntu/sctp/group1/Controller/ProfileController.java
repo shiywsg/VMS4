@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @RestController
-@RequestMapping("/volunteers/profiles")
+@RequestMapping
 public class ProfileController {
 
     @Autowired
@@ -18,7 +18,7 @@ public class ProfileController {
 
     record Message(String message, boolean success) {}
 
-    @GetMapping("/{id}")
+    @GetMapping("/volunteers/profiles/{id}")
     public ResponseEntity<?> getProfileById(@PathVariable Integer id) {
         try {
             Profile profile = profileService.getProfileById(id);
@@ -32,7 +32,7 @@ public class ProfileController {
         }
     }
 
-    @PutMapping("/{volunteerid}/edit")
+    @PutMapping("/volunteers/profiles/{volunteerid}/edit")
     public ResponseEntity<?> editVolunteerProfile(@PathVariable Integer volunteerid, @RequestBody ProfileEditDto newVolunteerProfile) {
         try{
             return ResponseEntity.ok().body(profileService.editProfile(volunteerid, newVolunteerProfile));

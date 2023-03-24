@@ -13,7 +13,7 @@ import java.util.List;
 
 @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @RestController 
-@RequestMapping("/volunteers/availability")
+@RequestMapping
 public class AvailabilityController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class AvailabilityController {
 
     record Status(String msg, boolean success){};
 
-    @PostMapping("/{volunteerId}")
+    @PostMapping("/volunteers/availability/{volunteerId}")
     public ResponseEntity<?> setAvailability(@PathVariable Integer volunteerId, @RequestParam String date) {
         try {
             return ResponseEntity.ok().body(availabilityService.setAvailability(volunteerId, date));
@@ -34,7 +34,7 @@ public class AvailabilityController {
         }
     }
 
-    @GetMapping("/date/{date}")
+    @GetMapping("/volunteers/availability/date/{date}")
     public ResponseEntity<?> searchByDate(@PathVariable String date) {
         try {
             LocalDate parsedDate = LocalDate.parse(date);
@@ -49,7 +49,7 @@ public class AvailabilityController {
         }
     }
 
-    @PutMapping("/{volunteerId}")
+    @PutMapping("/volunteers/availability/{volunteerId}")
     public ResponseEntity<?> updateAvailability(@PathVariable Integer volunteerId,
                                                 @RequestParam String date,
                                                 @RequestParam(required = true) Boolean isAvail) {
