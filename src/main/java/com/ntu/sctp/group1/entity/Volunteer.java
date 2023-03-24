@@ -19,75 +19,83 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-    @Table(name="volunteer")
-    public class Volunteer {
+@Table(name="volunteer")
+public class Volunteer {
 
-            @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
-            private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-            @NonNull
-            @NotBlank(message = "Name cannot be blank!")
-            @Column(name = "name", nullable = false)
-            private String name;
+    @NonNull
+    @NotBlank(message = "Name cannot be blank!")
+    @Column(name = "name", nullable = false)
+    private String name;
 
-            @JsonFormat(pattern = "yyyy-MM-dd")
-            @Column(name = "date_of_birth")
-            private LocalDate dateOfBirth;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
 
-            @NonNull
-            @NotBlank(message = "Email cannot be blank!")
-            @Column(name = "email", nullable = false)
-            private String email;
+    @NonNull
+    @NotBlank(message = "Email cannot be blank!")
+    @Column(name = "email", nullable = false)
+    private String email;
 
-            @Column(name = "contact")
-            private Integer contact;
+    @Column(name = "contact")
+    private Integer contact;
 
-            @Column(name = "address")
-            private String address;
+    @Column(name = "address")
+    private String address;
 
-            @Column(name = "education")
-            private String education = "";
+    @Column(name = "education")
+    private String education = "";
 
-            @Column(name = "language")
-            private String language = "";
+    @Column(name = "language")
+    private String language = "";
 
-            @Column(name = "past_experience")
-            private String pastExperience = "";
+    @Column(name = "language2")
+    private String language2 = "";
 
-            @Column(name = "criminal_record")
-            private boolean hasCriminalRecord;
+    @Column(name = "language3")
+    private String language3 = "";
 
-            @Column(name = "referrer_name")
-            private String referrerName = "";
+    @Column(name = "past_experience")
+    private String pastExperience = "";
 
-            @Column(name = "referrer_contact")
-            private Long referrerContact;
+    @Column(name = "criminal_record")
+    private boolean hasCriminalRecord;
 
-            @Column(name="created_at", updatable= false)
-            Timestamp createdAt = new Timestamp(new Date().getTime());
+    @Column(name = "referrer_name")
+    private String referrerName = "";
 
-            public Timestamp getCreatedAt() {
-                return createdAt;
-            }
-            public void setCreatedAt(Timestamp createdAt) {
-                this.createdAt = createdAt;
-            }
+    @Column(name = "referrer_contact")
+    private Long referrerContact;
 
-        @JsonIgnore
-        @OneToOne(mappedBy = "volunteer", cascade = CascadeType.ALL)
-        private Profile profile;
+    @Column(name = "created_at", updatable = false)
+    Timestamp createdAt = new Timestamp(new Date().getTime());
 
-        @JsonIgnore
-        @OneToMany (mappedBy = "volunteer", cascade = CascadeType.ALL)
-        List<Availability> availabilities;
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
 
-        @JsonIgnore
-        @ManyToMany 
-        @JoinTable(
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "volunteer", cascade = CascadeType.ALL)
+    private Profile profile;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL)
+    List<Availability> availabilities;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
             name = "enrolment_volunteer",
             joinColumns = @JoinColumn(name = "volunteer_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "enrolment_id", referencedColumnName = "id")
-        )
-        private Set<Enrolment> enrolments;
+    )
+    private Set<Enrolment> enrolments;
+
 }

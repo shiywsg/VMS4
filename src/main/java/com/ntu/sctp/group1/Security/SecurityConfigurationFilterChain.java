@@ -28,7 +28,6 @@ public class SecurityConfigurationFilterChain {
                 .requestMatchers(new AntPathRequestMatcher("/h2/**"))
                 .permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/**").permitAll()
-//                .requestMatchers(HttpMethod.GET, "/admin/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .addFilterAfter(firebaseFilter, UsernamePasswordAuthenticationFilter.class);

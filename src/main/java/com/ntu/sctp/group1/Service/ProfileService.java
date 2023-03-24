@@ -29,16 +29,16 @@ public class ProfileService {
         List<Profile> profile = profileRepository.findAll();
         if(profile.size() == 0) {
             throw new NoProfileFoundExceptions("No profile found.");
-        } 
+        }
         return profile;
     }
 
     public Profile editProfile(Integer volunteerid, ProfileEditDto newVolunteerProfile)
-    throws NoProfileFoundExceptions{
+            throws NoProfileFoundExceptions{
         Optional<Profile> findProfile = profileRepository.findByVolunteerId(volunteerid);
         if (findProfile.isEmpty()){
             throw new NoProfileFoundExceptions("now profile found");
-        } 
+        }
         Profile existingProfile = findProfile.get();
         existingProfile.setHobbies(newVolunteerProfile.getHobbies());
         existingProfile.setInterests(newVolunteerProfile.getInterests());

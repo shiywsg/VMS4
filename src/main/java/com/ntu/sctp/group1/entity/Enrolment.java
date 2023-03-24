@@ -1,6 +1,7 @@
 package com.ntu.sctp.group1.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,13 +27,17 @@ public class Enrolment {
     @Column(name = "date")
     private LocalDate date;
 
-    // @OneToOne
-    // @JoinColumn(name = "programme_id")
-    // private Programme programme;
+    @Column(name = "time_of_program")
+    private String timeOfProgram;
 
+    @OneToOne
+    @JoinColumn(name = "program_id")
+    private Program program;
+
+    @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "enrolment_volunteer", joinColumns = @JoinColumn(name = "enrolment_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "volunteer_id", referencedColumnName = "id"))
+    @JoinTable(name = "enrolment_volunteer",
+            joinColumns = @JoinColumn(name = "enrolment_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "volunteer_id", referencedColumnName = "id"))
     private Set<Volunteer> volunteers;
-
-
 }
