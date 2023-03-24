@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/admin/enrolment")
+@RequestMapping
 public class EnrolmentController {
 
     @Autowired 
@@ -18,7 +18,7 @@ public class EnrolmentController {
 
     record Status(String msg, boolean success){};
 
-    @GetMapping
+    @GetMapping("/admin/enrolment")
         public ResponseEntity<?> getAllEnrolments() {
             try {
                 return ResponseEntity.ok().body(enrolmentService.getAllEnrolments());
@@ -31,7 +31,7 @@ public class EnrolmentController {
             } 
         }
 
-        @PostMapping("/newenrolment")
+        @PostMapping("/admin/enrolment/newenrolment")
     public ResponseEntity<?> createEnrolment(@RequestBody EnrolDto enrolDto) {
         try {
             return ResponseEntity.ok().body(enrolmentService.createEnrolment(enrolDto));
@@ -43,7 +43,7 @@ public class EnrolmentController {
         }
     }
 
-    @PutMapping ("/update")
+    @PutMapping ("/admin/enrolment/update")
         public ResponseEntity<?> updateEnrolment(@RequestBody EnrolEditDto enrolEditDto) {
             try {
                 return ResponseEntity.ok().body(enrolmentService.updateEnrolment(enrolEditDto));
@@ -56,7 +56,7 @@ public class EnrolmentController {
             }
         }
 
-    @PostMapping("/volunteers")
+    @PostMapping("/admin/enrolment/volunteers")
     public ResponseEntity<?> addVolunteer(@RequestParam int volunteer_id, @RequestParam int program_id){
         try{
             enrolmentService.addVolunteer(volunteer_id, program_id);
@@ -70,7 +70,7 @@ public class EnrolmentController {
         }
     }
 
-    @GetMapping ("/volunteers")
+    @GetMapping ("/admin/enrolment/volunteers")
     public ResponseEntity<?> getAllVolunteer(@RequestParam int program_id){
         try{
             return ResponseEntity.ok().body(enrolmentService.getAllVolunteer(program_id));
@@ -83,7 +83,7 @@ public class EnrolmentController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/enrolment/{id}")
     public ResponseEntity<?> deleteEnrolment(@PathVariable Integer id) {
         try {
             enrolmentService.deleteEnrolment(id);
