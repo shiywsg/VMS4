@@ -66,7 +66,7 @@ import java.util.Map;
             }
         }
 
-            @PostMapping("/admin/newvolunteer")
+        @PostMapping("/admin/newvolunteer")
         public ResponseEntity<?> createVolunteer(@RequestBody Volunteer newVolunteer) {
             try {
                 Volunteer volunteer = volunteerService.createVolunteer(newVolunteer);
