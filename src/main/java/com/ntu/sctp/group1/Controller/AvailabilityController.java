@@ -13,7 +13,6 @@ import java.util.List;
 
 @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @RestController
-@RequestMapping
 public class AvailabilityController {
 
     @Autowired

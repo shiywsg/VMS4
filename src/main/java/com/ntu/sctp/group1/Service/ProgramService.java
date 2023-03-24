@@ -24,7 +24,7 @@ public class ProgramService {
     public List<Program> getAllPrograms() throws NoProgramFoundExceptions {
         List<Program> programs = programRepository.findAll();
         if (programs.isEmpty()) {
-            throw new NoProgramFoundExceptions ("No Program Found!");
+            throw new NoProgramFoundExceptions("No Program Found!");
         } else {
             return programs;
         }

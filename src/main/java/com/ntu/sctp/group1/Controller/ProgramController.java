@@ -16,7 +16,8 @@ public class ProgramController {
     @Autowired
     ProgramService programService;
 
-    record Message(String message, boolean success){}
+    record Message(String message, boolean success) {
+    }
 
     @GetMapping("/admin/programs")
     public ResponseEntity<?> getAllVolunteers() {
@@ -27,7 +28,7 @@ public class ProgramController {
             return ResponseEntity.notFound().build();
         } catch (Exception ex) {
             ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
+            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
         }
     }
 
@@ -40,7 +41,7 @@ public class ProgramController {
             return ResponseEntity.notFound().build();
         } catch (Exception ex) {
             ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
+            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
         }
     }
 
@@ -53,7 +54,7 @@ public class ProgramController {
             return ResponseEntity.notFound().build();
         } catch (Exception ex) {
             ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
+            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
         }
     }
 
@@ -62,11 +63,11 @@ public class ProgramController {
         try {
             Program program = programService.updateProgram(id, updatedProgram);
             return ResponseEntity.ok(program);
-        } catch (NoProgramFoundExceptions ex)  {
+        } catch (NoProgramFoundExceptions ex) {
             return ResponseEntity.notFound().build();
         } catch (Exception ex) {
             ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
+            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
         }
     }
 
@@ -79,7 +80,7 @@ public class ProgramController {
             return ResponseEntity.notFound().build();
         } catch (Exception ex) {
             ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
+            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
         }
     }
 }

@@ -112,6 +112,8 @@ public class VolunteerService {
             existingVolunteer.setAddress(updatedVolunteer.getAddress());
             existingVolunteer.setEducation(updatedVolunteer.getEducation());
             existingVolunteer.setLanguage(updatedVolunteer.getLanguage());
+            existingVolunteer.setLanguage2(updatedVolunteer.getLanguage2());
+            existingVolunteer.setLanguage3(updatedVolunteer.getLanguage3());
             existingVolunteer.setPastExperience(updatedVolunteer.getPastExperience());
             existingVolunteer.setDateOfBirth(updatedVolunteer.getDateOfBirth());
             existingVolunteer.setReferrerName(updatedVolunteer.getReferrerName());

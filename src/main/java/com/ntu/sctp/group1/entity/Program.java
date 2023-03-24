@@ -37,12 +37,13 @@ public class Program {
     @Column(name = "number_of_volunteers")
     private Integer noOfVolunteers;
 
-    @Column(name="created_at", updatable= false)
+    @Column(name = "created_at", updatable = false)
     Timestamp createdAt = new Timestamp(new Date().getTime());
 
     public Timestamp getCreatedAt() {
         return createdAt;
     }
+
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }

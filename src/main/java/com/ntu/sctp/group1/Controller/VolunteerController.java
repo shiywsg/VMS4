@@ -15,7 +15,6 @@ import java.util.Map;
 
     @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
     @RestController
-//    @RequestMapping("/admin")
     public class VolunteerController {
 
     @Autowired
@@ -36,7 +35,7 @@ import java.util.Map;
             } catch (Exception ex) {
                 ex.printStackTrace();
                 return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
-            }
+            } 
         }
 
         @GetMapping("/admin/volunteers/{id}")
@@ -67,6 +66,7 @@ import java.util.Map;
         }
 
 
+
         @PutMapping("/volunteers/{id}")
         public ResponseEntity<?> updateVolunteer(@PathVariable int id, @RequestBody Volunteer updatedVolunteer) {
             try {
@@ -83,16 +83,18 @@ import java.util.Map;
 
         @DeleteMapping("/admin/volunteers/{id}")
         public ResponseEntity<?> deleteVolunteer(@PathVariable int id) {
-            try {
-                volunteerService.deleteVolunteer(id);
-                return ResponseEntity.ok().body(new Message("Volunteer with ID " + id + " deleted" , true));
-            } catch(NoVolunteerFoundExceptions ex) {
-                ex.printStackTrace();
-                return ResponseEntity.notFound().build();
-            }catch (Exception ex) {
-                ex.printStackTrace();
-                return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
-            }
+
+          try {
+              volunteerService.deleteVolunteer(id);
+              return ResponseEntity.ok().body(new Message("Volunteer with ID " + id + " deleted" , true));
+          } catch(NoVolunteerFoundExceptions ex) {
+              ex.printStackTrace();
+              return ResponseEntity.notFound().build();
+          }catch (Exception ex) {
+              ex.printStackTrace();
+              return ResponseEntity.badRequest().body(new Message(ex.getMessage(),false));
+          }
+
         }
 
 
