@@ -41,7 +41,7 @@ public class Volunteer {
     private String email;
 
     @Column(name = "contact")
-    private Integer contact;
+    private String contact;
 
     @Column(name = "address")
     private String address;

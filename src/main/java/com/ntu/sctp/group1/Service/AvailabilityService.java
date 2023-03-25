@@ -24,15 +24,16 @@ public class AvailabilityService {
     VolunteerRepository volunteerRepository;
 
     // create availability of a volunteer
-    public Availability setAvailability(Integer volunteerId, String date) throws NoVolunteerFoundExceptions {
+    public Availability setAvailability(Integer volunteerId, String date, String timeslot) throws NoVolunteerFoundExceptions {
         Optional<Volunteer> findVolunteer = volunteerRepository.findById(volunteerId);
         if(findVolunteer.isEmpty()) {
             throw new NoVolunteerFoundExceptions("No volunteer id founds");
         }
         Availability availDate = new Availability();
         availDate.setAvail(true);
+        availDate.setTimeslot(timeslot);
         availDate.setVolunteer(findVolunteer.get());
-        availDate.setDate(LocalDate.parse(date));
+        availDate.setDate(LocalDate.parse((date)));
 
         return availabilityRepo.save(availDate);
     }

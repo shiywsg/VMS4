@@ -52,7 +52,7 @@ public class Group1Application {
 		Volunteer person = new Volunteer("user1", "user1@gmail.com");
 		person.setAddress("Blk 233, Bishan street 12");
 		person.setDateOfBirth(LocalDate.parse(("1980-07-01")));
-		person.setContact(98273628);
+		person.setContact("98273628");
 		person.setEducation("degree");
 		person.setLanguage("english");
 		person.setHasCriminalRecord(false);
@@ -63,7 +63,7 @@ public class Group1Application {
 		Volunteer person2 = new Volunteer("user2", "user2@gmail.com");
 		person2.setAddress("Blk 233, Ang mo kio street 12");
 		person2.setDateOfBirth(LocalDate.parse(("1990-07-01")));
-		person2.setContact(987979792);
+		person2.setContact("987979792");
 		person2.setEducation("master");
 		person2.setLanguage("english");
 		person2.setHasCriminalRecord(false);
@@ -74,7 +74,7 @@ public class Group1Application {
 		Volunteer person3 = new Volunteer("admin", "admin@gmail.com");
 		person3.setAddress("Blk 233, yishun street 12");
 		person3.setDateOfBirth(LocalDate.parse(("1997-07-01")));
-		person3.setContact(937464545);
+		person3.setContact("937464545");
 		person3.setEducation("degree");
 		person3.setLanguage("english");
 		person3.setHasCriminalRecord(false);
