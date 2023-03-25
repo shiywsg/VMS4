@@ -35,6 +35,7 @@
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoProfileFoundExceptions.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/VolunteerController.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/UserController.java
+/Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/AvailDateFoundException.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoAvailabilityFoundExceptions.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Security/FirebaseFilter.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Service/ProfileService.java
