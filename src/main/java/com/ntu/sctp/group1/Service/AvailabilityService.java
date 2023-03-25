@@ -1,5 +1,6 @@
 package com.ntu.sctp.group1.Service;
 
+import com.ntu.sctp.group1.Exceptions.AvailDateFoundException;
 import com.ntu.sctp.group1.Exceptions.NoAvailabilityFoundExceptions;
 import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
 import com.ntu.sctp.group1.entity.Availability;
@@ -23,11 +24,33 @@ public class AvailabilityService {
     @Autowired
     VolunteerRepository volunteerRepository;
 
+    // Get availabilities of a volunteer
+    public List<Availability> getAvailabilitiesOfAVolunteer(Integer volunteerId) throws NoVolunteerFoundExceptions, NoAvailabilityFoundExceptions {
+        Optional<Volunteer> findVolunteer = volunteerRepository.findById(volunteerId);
+        if(findVolunteer.isEmpty()) {
+            throw new NoVolunteerFoundExceptions("No volunteer found under id " + volunteerId);
+        }
+        if(findVolunteer.get().getAvailabilities().size() == 0) {
+            throw new NoAvailabilityFoundExceptions("Volunteer had not set any availabilities as yet!");
+        }
+        return findVolunteer.get().getAvailabilities();
+    }
+
     // create availability of a volunteer
-    public Availability setAvailability(Integer volunteerId, String date, String timeslot) throws NoVolunteerFoundExceptions {
+    public Availability setAvailability(Integer volunteerId, String date, String timeslot) throws NoVolunteerFoundExceptions, AvailDateFoundException {
         Optional<Volunteer> findVolunteer = volunteerRepository.findById(volunteerId);
         if(findVolunteer.isEmpty()) {
             throw new NoVolunteerFoundExceptions("No volunteer id founds");
+        }
+        Optional<List<Availability>> searchExistingAvail = availabilityRepo.findByVolunteerId(volunteerId);
+        boolean found = searchExistingAvail.isPresent();
+        if(found) {
+            List<Availability> checkForSameDate = searchExistingAvail.get().stream()
+                    .filter((avail)-> avail.getDate().equals(LocalDate.parse((date))))
+                    .toList();
+            if(checkForSameDate.size() != 0) {
+                throw new AvailDateFoundException("You have already set an availability on this date!");
+            }
         }
         Availability availDate = new Availability();
         availDate.setAvail(true);

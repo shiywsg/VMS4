@@ -48,6 +48,20 @@ public class AvailabilityController {
         }
     }
 
+    @GetMapping("/volunteers/availabilities/{volunteerId}")
+    public ResponseEntity<?> getAvailabilitiesOfAVolunteer(@PathVariable Integer volunteerId) {
+        try {
+            return ResponseEntity.ok().body(availabilityService.getAvailabilitiesOfAVolunteer(volunteerId));
+        } catch(NoVolunteerFoundExceptions | NoAvailabilityFoundExceptions ex) {
+            ex.printStackTrace();
+            return ResponseEntity.notFound().build();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.internalServerError().body(new Status(ex.getMessage(), false));
+        }
+    }
+
+
     @PutMapping("/volunteers/availability/{volunteerId}")
     public ResponseEntity<?> updateAvailability(@PathVariable Integer volunteerId,
                                                 @RequestParam String date,

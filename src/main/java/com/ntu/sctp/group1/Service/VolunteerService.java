@@ -78,6 +78,7 @@ public class VolunteerService {
         return filteredList;
     }
 
+
     public Volunteer createVolunteer(Volunteer newVolunteer, String uid) throws NoVolunteerFoundExceptions {
         if (newVolunteer.getName().isEmpty()) {
             throw new NoVolunteerFoundExceptions("Volunteer's name and email cannot be empty");
