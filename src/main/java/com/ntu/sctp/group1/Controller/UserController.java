@@ -40,6 +40,22 @@ public class UserController {
         }
     }
 
+    @PostMapping("/admin/signin")
+    public ResponseEntity<?> signinAdministration(@RequestBody UidDto uidDto) {
+        try {
+            return ResponseEntity.ok().body(userService.administratorSignIn(uidDto));
+        } catch(InvalidUidException ex) {
+            ex.printStackTrace();
+            return ResponseEntity.badRequest().body(new Status("Uid is invalid!", false));
+        } catch(UnauthorisedSignInException ex) {
+            ex.printStackTrace();
+            return ResponseEntity.badRequest().body(new Status("You are not authorised to access!", false));
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.internalServerError().body(new Status("Something is wrong with the server!", false));
+        }
+    }
+
     @PostMapping("/signout")
     public ResponseEntity<?> signoutUser(@RequestBody UidDto uid) {
         try {
