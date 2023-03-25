@@ -25,6 +25,7 @@ com/ntu/sctp/group1/Controller/VolunteerController.class
 com/ntu/sctp/group1/Controller/EnrolmentController.class
 com/ntu/sctp/group1/DataTransferObject/ProfileEditDto.class
 com/ntu/sctp/group1/repository/AvailabilityRepository.class
+com/ntu/sctp/group1/Controller/UserController$Status.class
 com/ntu/sctp/group1/Exceptions/NoProgramFoundExceptions.class
 com/ntu/sctp/group1/Service/AvailabilityService.class
 com/ntu/sctp/group1/Exceptions/AvailDateFoundException.class
@@ -36,6 +37,7 @@ com/ntu/sctp/group1/Service/VolunteerService.class
 com/ntu/sctp/group1/Service/ProgramService.class
 com/ntu/sctp/group1/DataTransferObject/UidDto.class
 com/ntu/sctp/group1/Exceptions/NoEnrolmentFoundExceptions.class
+com/ntu/sctp/group1/Exceptions/UnauthorisedSignInException.class
 com/ntu/sctp/group1/Controller/ProgramController.class
 com/ntu/sctp/group1/DataTransferObject/UserSignInDto.class
 com/ntu/sctp/group1/Group1Application$1.class

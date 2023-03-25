@@ -58,4 +58,19 @@ public class UserService {
         userRepo.save(user);
     }
 
+    public UserCredentials administratorSignIn(UidDto uidDto) throws InvalidUidException, UnauthorisedSignInException {
+        Optional<UserCredentials> findUser = userRepo.findByUid(uidDto.getUid());
+        if(findUser.isEmpty()) {
+            throw new InvalidUidException("UID in credential is not valid");
+        }
+
+        if(!findUser.get().getRole().equals(Role.ADMIN)) {
+            throw new UnauthorisedSignInException("You are not authorised to access!");
+        }
+
+        UserCredentials user = findUser.get();
+        user.setTokenIsActive(true);
+        return userRepo.save(user);
+    }
+
 }

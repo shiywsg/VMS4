@@ -46,6 +46,9 @@ public class Volunteer {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "occupation")
+    private String occupation;
+
     @Column(name = "education")
     private String education = "";
 
