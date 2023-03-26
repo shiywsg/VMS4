@@ -18,7 +18,7 @@ public class ProfileController {
 
     record Message(String message, boolean success) {}
 
-    @GetMapping("volunteers/profiles/all")
+    @GetMapping("/volunteers/profiles/all")
     public ResponseEntity<?> getAllProfiles() {
         try {
             return ResponseEntity.ok().body(profileService.getAllProfiles());
