@@ -31,6 +31,7 @@
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Service/EnrolmentService.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/DataTransferObject/ProfileEditDto.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Volunteer.java
+/Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/UnauthorisedSignInException.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Availability.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoProfileFoundExceptions.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/VolunteerController.java

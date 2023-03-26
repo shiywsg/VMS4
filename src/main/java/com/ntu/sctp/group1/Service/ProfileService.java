@@ -16,6 +16,14 @@ public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
+    public List<Profile> getAllProfiles() throws NoProfileFoundExceptions {
+        List<Profile> allProfiles = profileRepository.findAll();
+        if(allProfiles.size() == 0) {
+            throw new NoProfileFoundExceptions("There are no profiles found in repository");
+        }
+        return allProfiles;
+    }
+
     public Profile getProfileById(Integer id) throws NoProfileFoundExceptions {
         Optional<Profile> profile = profileRepository.findById(id);
         if (profile.isPresent()) {
