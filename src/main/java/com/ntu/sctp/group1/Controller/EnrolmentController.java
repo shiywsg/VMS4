@@ -25,7 +25,7 @@ public class EnrolmentController {
             return ResponseEntity.ok().body(enrolmentService.getAllEnrolments());
         } catch (NoEnrolmentFoundExceptions ex) {
             ex.printStackTrace();
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));

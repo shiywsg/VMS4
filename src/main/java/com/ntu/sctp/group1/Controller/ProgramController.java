@@ -25,7 +25,7 @@ public class ProgramController {
             return ResponseEntity.ok().body(programService.getAllPrograms());
         } catch (NoProgramFoundExceptions ex) {
             ex.printStackTrace();
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));

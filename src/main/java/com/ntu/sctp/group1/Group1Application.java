@@ -1,13 +1,7 @@
 package com.ntu.sctp.group1;
 
-import com.ntu.sctp.group1.entity.Profile;
-import com.ntu.sctp.group1.entity.Role;
-import com.ntu.sctp.group1.entity.UserCredentials;
-import com.ntu.sctp.group1.entity.Volunteer;
-import com.ntu.sctp.group1.repository.AvailabilityRepository;
-import com.ntu.sctp.group1.repository.ProfileRepository;
-import com.ntu.sctp.group1.repository.UserRepository;
-import com.ntu.sctp.group1.repository.VolunteerRepository;
+import com.ntu.sctp.group1.entity.*;
+import com.ntu.sctp.group1.repository.*;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +11,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
 
 
 @SpringBootApplication
@@ -29,7 +25,13 @@ public class Group1Application {
 	ProfileRepository profileRepo;
 
 	@Autowired
-	AvailabilityRepository availRepo;
+	ProgramRepository programRepo;
+
+	@Autowired
+	EnrolmentRepository enrolmentRepository;
+
+//	@Autowired
+//	AvailabilityRepository availRepo;
 
 	@Autowired
 	UserRepository userRepo;
@@ -120,7 +122,32 @@ public class Group1Application {
 		profileRepo.save(profile2);
 		profileRepo.save(profile3);
 
+		Program program1 = new Program();
+		Enrolment enrolment1 = new Enrolment();
+		program1.setTimeOfProgram("1000");
+		program1.setName("Home Cleaning for Elderly");
+		program1.setDate(LocalDate.parse(("2025-07-01")));
+		program1.setVolunteersRequired(20);
+		program1.setNoOfVolunteers(0);
+		enrolment1.setProgram(program1);
+		enrolment1.setTimeOfProgram(program1.getTimeOfProgram());
+		enrolment1.setDate(program1.getDate());
+		enrolment1.setVolunteers(new HashSet<>());
 
+		Program program2 = new Program();
+		Enrolment enrolment2 = new Enrolment();
+		program2.setTimeOfProgram("1200");
+		program2.setName("TEACH");
+		program2.setDate(LocalDate.parse(("2025-08-01")));
+		program2.setVolunteersRequired(15);
+		program2.setNoOfVolunteers(0);
+		enrolment2.setProgram(program2);
+		enrolment2.setTimeOfProgram(program2.getTimeOfProgram());
+		enrolment2.setDate(program2.getDate());
+		enrolment2.setVolunteers(new HashSet<>());
+
+		programRepo.saveAll(List.of(program1, program2));
+		enrolmentRepository.saveAll(List.of(enrolment1, enrolment2));
 
 //		Availability avail = new Availability();
 //		avail.setDate(LocalDate.parse(("2025-07-01")));
