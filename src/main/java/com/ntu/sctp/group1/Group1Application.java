@@ -53,7 +53,7 @@ public class Group1Application {
 
 		Volunteer person = new Volunteer("user1", "user1@gmail.com");
 		person.setAddress("Blk 233, Bishan street 12");
-		person.setProfilePicture("https://cdn.vectorstock.com/i/preview-1x/51/48/cartoon-character-in-glasses-avatar-young-man-vector-33215148.jpg");
+		person.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg/1200px-Elon_Musk_Royal_Society_%28crop2%29.jpg");
 		person.setDateOfBirth(LocalDate.parse(("1980-07-01")));
 		person.setContact("98273628");
 		person.setEducation("degree");
@@ -65,7 +65,7 @@ public class Group1Application {
 
 		Volunteer person2 = new Volunteer("user2", "user2@gmail.com");
 		person2.setAddress("Blk 233, Ang mo kio street 12");
-		person.setProfilePicture("https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-542759665.jpg");
+		person2.setProfilePicture("https://pbs.twimg.com/media/DwoqWMYWwAAow84.jpg");
 		person2.setDateOfBirth(LocalDate.parse(("1990-07-01")));
 		person2.setContact("987979792");
 		person2.setEducation("master");
@@ -76,7 +76,7 @@ public class Group1Application {
 		person2.setReferrerContact(Long.parseLong("92378229"));
 
 		Volunteer person3 = new Volunteer("admin", "admin@gmail.com");
-		person.setProfilePicture("https://previews.123rf.com/images/vectorkif/vectorkif1904/vectorkif190400101/121272615-face-expression-of-stylish-modern-young-man-sad-or-tired-male-emotion-handsome-cartoon-character.jpg");
+		person3.setProfilePicture("https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2016/02/Headshot-Photography-London-1052.jpeg?ssl=1");
 		person3.setAddress("Blk 233, yishun street 12");
 		person3.setDateOfBirth(LocalDate.parse(("1997-07-01")));
 		person3.setContact("937464545");
