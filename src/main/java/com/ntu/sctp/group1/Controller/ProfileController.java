@@ -18,7 +18,7 @@ public class ProfileController {
 
     record Message(String message, boolean success) {}
 
-    @GetMapping("/volunteers/profiles/all")
+    @GetMapping("/admin/volunteers/profiles/all")
     public ResponseEntity<?> getAllProfiles() {
         try {
             return ResponseEntity.ok().body(profileService.getAllProfiles());
@@ -31,7 +31,7 @@ public class ProfileController {
         }
     }
 
-    @GetMapping("/volunteers/profiles/{id}")
+    @GetMapping("/admin/volunteers/profiles/{id}")
     public ResponseEntity<?> getProfileById(@PathVariable Integer id) {
         try {
             Profile profile = profileService.getProfileById(id);
