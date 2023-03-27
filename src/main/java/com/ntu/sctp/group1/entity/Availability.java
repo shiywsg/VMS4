@@ -29,6 +29,9 @@ public class Availability {
     @Column(name = "avail")
     private boolean avail;
 
+    @Column(name = "timeslot")
+    private String timeslot;
+
     @Column(name="created_at", updatable= false)
     Timestamp createdAt = new Timestamp(new Date().getTime());
 

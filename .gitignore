@@ -5,7 +5,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+service-account.json
 ### STS ###
 .apt_generated
 .classpath
@@ -33,5 +33,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-#service-account.json

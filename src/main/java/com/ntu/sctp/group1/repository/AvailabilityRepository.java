@@ -13,5 +13,6 @@ import java.util.Optional;
 public interface AvailabilityRepository extends JpaRepository<Availability, Integer> {
 
     Optional<Availability> findByVolunteerAndDate(Volunteer volunteer, LocalDate date);
+    Optional<List<Availability>> findByVolunteerId(Integer volunteerId);
     List<Availability> findByDate(LocalDate date);
 }

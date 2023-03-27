@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins= {"*"}, maxAge = 86400, allowCredentials = "false" )
 @RestController
 @RequestMapping
 public class EnrolmentController {
@@ -24,7 +25,7 @@ public class EnrolmentController {
             return ResponseEntity.ok().body(enrolmentService.getAllEnrolments());
         } catch (NoEnrolmentFoundExceptions ex) {
             ex.printStackTrace();
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));

@@ -41,10 +41,13 @@ public class Volunteer {
     private String email;
 
     @Column(name = "contact")
-    private Integer contact;
+    private String contact;
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "occupation")
+    private String occupation;
 
     @Column(name = "education")
     private String education = "";
@@ -70,6 +73,9 @@ public class Volunteer {
 
     @Column(name = "referrer_contact")
     private Long referrerContact;
+
+    @Column(name = "profile_picture")
+    private String profilePicture = "";
 
     @Column(name = "created_at", updatable = false)
     Timestamp createdAt = new Timestamp(new Date().getTime());

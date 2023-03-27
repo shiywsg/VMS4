@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
+@CrossOrigin(origins= {"*"}, maxAge = 86400, allowCredentials = "false" )
 @RestController
 @RequestMapping
 public class ProgramController {
@@ -25,7 +25,7 @@ public class ProgramController {
             return ResponseEntity.ok().body(programService.getAllPrograms());
         } catch (NoProgramFoundExceptions ex) {
             ex.printStackTrace();
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));

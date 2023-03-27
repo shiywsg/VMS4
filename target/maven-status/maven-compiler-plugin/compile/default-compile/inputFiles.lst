@@ -8,7 +8,6 @@
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/VolunteerRepository.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Profile.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Enrolment.java
-/Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/LoginRepository.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/UserController.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoAvailabilityFoundExceptions.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/ProgramController.java
@@ -16,12 +15,13 @@
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Security/FirebaseFilter.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/ProfileRepository.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoEnrolmentFoundExceptions.java
+/Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/UnauthorisedSignInException.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/DataTransferObject/ProfileEditDto.java
-/Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/Login.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/DataTransferObject/EnrolEditDto.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/ProgramRepository.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Controller/EnrolmentController.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/FirebaseConfiguration.java
+/Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/AvailDateFoundException.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Service/EnrolmentService.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/entity/UserCredentials.java
 /Users/teokaiwen/sctp/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/EnrolmentRepository.java

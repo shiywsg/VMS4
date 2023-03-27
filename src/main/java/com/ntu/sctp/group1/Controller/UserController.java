@@ -3,6 +3,7 @@ package com.ntu.sctp.group1.Controller;
 import com.ntu.sctp.group1.DataTransferObject.UidDto;
 import com.ntu.sctp.group1.Exceptions.InvalidUidException;
 import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
+import com.ntu.sctp.group1.Exceptions.UnauthorisedSignInException;
 import com.ntu.sctp.group1.Service.UserService;
 import com.ntu.sctp.group1.Service.VolunteerService;
 import com.ntu.sctp.group1.entity.Volunteer;
@@ -10,9 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins= {"*"}, maxAge = 86400, allowCredentials = "false" )
 @RestController
 @RequestMapping("/api")
 public class UserController {
+
+    record Status(String message, boolean success){};
+
     @Autowired
     UserService userService;
 
@@ -26,9 +31,28 @@ public class UserController {
         } catch(InvalidUidException | NoVolunteerFoundExceptions ex) {
             ex.printStackTrace();
             return ResponseEntity.notFound().build();
+        } catch(UnauthorisedSignInException ex) {
+            ex.printStackTrace();
+            return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));
         } catch(Exception ex) {
             ex.printStackTrace();
             return ResponseEntity.internalServerError().body("Something is wrong with the server");
+        }
+    }
+
+    @PostMapping("/admin/signin")
+    public ResponseEntity<?> signinAdministration(@RequestBody UidDto uidDto) {
+        try {
+            return ResponseEntity.ok().body(userService.administratorSignIn(uidDto));
+        } catch(InvalidUidException ex) {
+            ex.printStackTrace();
+            return ResponseEntity.badRequest().body(new Status("Uid is invalid!", false));
+        } catch(UnauthorisedSignInException ex) {
+            ex.printStackTrace();
+            return ResponseEntity.badRequest().body(new Status("You are not authorised to access!", false));
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.internalServerError().body(new Status("Something is wrong with the server!", false));
         }
     }
 

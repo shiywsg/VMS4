@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-    @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
+    @CrossOrigin(origins= {"*"}, maxAge = 86400, allowCredentials = "false" )
     @RestController
     public class VolunteerController {
 
@@ -64,6 +64,7 @@ import java.util.Map;
                 return ResponseEntity.badRequest().body(null);
             }
         }
+
 
 
 

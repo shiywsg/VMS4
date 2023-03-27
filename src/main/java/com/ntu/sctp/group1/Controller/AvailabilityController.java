@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
+@CrossOrigin(origins= {"*"}, maxAge = 86400, allowCredentials = "false" )
 @RestController
 public class AvailabilityController {
 
@@ -21,9 +21,9 @@ public class AvailabilityController {
     record Status(String msg, boolean success){};
 
     @PostMapping("/volunteers/availability/{volunteerId}")
-    public ResponseEntity<?> setAvailability(@PathVariable Integer volunteerId, @RequestParam String date) {
+    public ResponseEntity<?> setAvailability(@PathVariable Integer volunteerId, @RequestParam String date, @RequestParam String timeslot) {
         try {
-            return ResponseEntity.ok().body(availabilityService.setAvailability(volunteerId, date));
+            return ResponseEntity.ok().body(availabilityService.setAvailability(volunteerId, date, timeslot));
         } catch(NoVolunteerFoundExceptions ex) {
             ex.printStackTrace();
             return ResponseEntity.notFound().build();
@@ -47,6 +47,20 @@ public class AvailabilityController {
             return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));
         }
     }
+
+    @GetMapping("/volunteers/availabilities/{volunteerId}")
+    public ResponseEntity<?> getAvailabilitiesOfAVolunteer(@PathVariable Integer volunteerId) {
+        try {
+            return ResponseEntity.ok().body(availabilityService.getAvailabilitiesOfAVolunteer(volunteerId));
+        } catch(NoVolunteerFoundExceptions | NoAvailabilityFoundExceptions ex) {
+            ex.printStackTrace();
+            return ResponseEntity.notFound().build();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.internalServerError().body(new Status(ex.getMessage(), false));
+        }
+    }
+
 
     @PutMapping("/volunteers/availability/{volunteerId}")
     public ResponseEntity<?> updateAvailability(@PathVariable Integer volunteerId,

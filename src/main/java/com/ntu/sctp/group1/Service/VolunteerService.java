@@ -78,6 +78,7 @@ public class VolunteerService {
         return filteredList;
     }
 
+
     public Volunteer createVolunteer(Volunteer newVolunteer, String uid) throws NoVolunteerFoundExceptions {
         if (newVolunteer.getName().isEmpty()) {
             throw new NoVolunteerFoundExceptions("Volunteer's name and email cannot be empty");
@@ -111,6 +112,7 @@ public class VolunteerService {
             existingVolunteer.setContact(updatedVolunteer.getContact());
             existingVolunteer.setAddress(updatedVolunteer.getAddress());
             existingVolunteer.setEducation(updatedVolunteer.getEducation());
+            existingVolunteer.setOccupation(updatedVolunteer.getOccupation());
             existingVolunteer.setLanguage(updatedVolunteer.getLanguage());
             existingVolunteer.setLanguage2(updatedVolunteer.getLanguage2());
             existingVolunteer.setLanguage3(updatedVolunteer.getLanguage3());

@@ -18,6 +18,19 @@ public class ProfileController {
 
     record Message(String message, boolean success) {}
 
+    @GetMapping("/volunteers/profiles/all")
+    public ResponseEntity<?> getAllProfiles() {
+        try {
+            return ResponseEntity.ok().body(profileService.getAllProfiles());
+        } catch(NoProfileFoundExceptions ex) {
+            ex.printStackTrace();
+            return ResponseEntity.notFound().build();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.internalServerError().body(new Message("Something is wrong with the server", false));
+        }
+    }
+
     @GetMapping("/volunteers/profiles/{id}")
     public ResponseEntity<?> getProfileById(@PathVariable Integer id) {
         try {
