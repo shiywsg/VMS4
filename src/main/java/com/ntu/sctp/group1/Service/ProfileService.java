@@ -25,7 +25,7 @@ public class ProfileService {
     }
 
     public Profile getProfileById(Integer id) throws NoProfileFoundExceptions {
-        Optional<Profile> profile = profileRepository.findById(id);
+        Optional<Profile> profile = profileRepository.findByVolunteerId(id);
         if (profile.isPresent()) {
             return profile.get();
         } else {
