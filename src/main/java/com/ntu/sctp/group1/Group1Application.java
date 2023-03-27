@@ -49,7 +49,7 @@ public class Group1Application {
 		Profile profile2 = new Profile();
 		Profile profile3 = new Profile();
 
-		Volunteer person = new Volunteer("user1", "user1@gmail.com");
+		Volunteer person = new Volunteer("user1", "claire@mail.com");
 		person.setAddress("Blk 233, Bishan street 12");
 		person.setDateOfBirth(LocalDate.parse(("1980-07-01")));
 		person.setContact(98273628);
@@ -87,7 +87,7 @@ public class Group1Application {
 		person3 = volunteerRepo.save(person3);
 
 		user.setUsername(person.getEmail());
-		user.setUid("aId0fTgOlKdrNpCd6IapWFnBC2D3");
+		user.setUid("TeRD6WMM8fOJ3mr2Pavcf10sMpp2");
 		user.setTokenIsActive(false);
 		user.setVolunteerId(person.getId());
 		user.setRole(Role.USER);
