@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
+@CrossOrigin(origins= {"*"}, maxAge = 86400, allowCredentials = "false" )
 @RestController
 @RequestMapping
 public class ProfileController {
@@ -18,7 +18,7 @@ public class ProfileController {
 
     record Message(String message, boolean success) {}
 
-    @GetMapping("/volunteers/profiles/all")
+    @GetMapping("/admin/volunteers/profiles/all")
     public ResponseEntity<?> getAllProfiles() {
         try {
             return ResponseEntity.ok().body(profileService.getAllProfiles());
@@ -31,7 +31,7 @@ public class ProfileController {
         }
     }
 
-    @GetMapping("/volunteers/profiles/{id}")
+    @GetMapping("/admin/volunteers/profiles/{id}")
     public ResponseEntity<?> getProfileById(@PathVariable Integer id) {
         try {
             Profile profile = profileService.getProfileById(id);
@@ -45,7 +45,7 @@ public class ProfileController {
         }
     }
 
-    @PutMapping("/volunteers/profiles/{volunteerid}/edit")
+    @PutMapping("/admin/volunteers/profiles/{volunteerid}/edit")
     public ResponseEntity<?> editVolunteerProfile(@PathVariable Integer volunteerid, @RequestBody ProfileEditDto newVolunteerProfile) {
         try{
             return ResponseEntity.ok().body(profileService.editProfile(volunteerid, newVolunteerProfile));
