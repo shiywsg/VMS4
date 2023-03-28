@@ -63,7 +63,7 @@ public class Group1Application {
 		Profile profile2 = new Profile();
 		Profile profile3 = new Profile();
 
-		Volunteer person = new Volunteer("user1", "claire@mail.com");
+		Volunteer person = new Volunteer("coco", "coco@mail.com");
 		person.setAddress("Blk 233, Bishan street 12");
 		person.setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg/1200px-Elon_Musk_Royal_Society_%28crop2%29.jpg");
 		person.setDateOfBirth(LocalDate.parse(("1980-07-01")));
@@ -75,7 +75,7 @@ public class Group1Application {
 		person.setReferrerName("Oliver");
 		person.setReferrerContact(Long.parseLong("92378229"));
 
-		Volunteer person2 = new Volunteer("user2", "user2@gmail.com");
+		Volunteer person2 = new Volunteer("may", "may@mail.com");
 		person2.setAddress("Blk 233, Ang mo kio street 12");
 		person2.setProfilePicture("https://pbs.twimg.com/media/DwoqWMYWwAAow84.jpg");
 		person2.setDateOfBirth(LocalDate.parse(("1990-07-01")));
@@ -87,7 +87,7 @@ public class Group1Application {
 		person2.setReferrerName("Oliver");
 		person2.setReferrerContact(Long.parseLong("92378229"));
 
-		Volunteer person3 = new Volunteer("admin", "admin@gmail.com");
+		Volunteer person3 = new Volunteer("ace", "ace@mail.com");
 		person3.setProfilePicture("https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2016/02/Headshot-Photography-London-1052.jpeg?ssl=1");
 		person3.setAddress("Blk 233, yishun street 12");
 		person3.setDateOfBirth(LocalDate.parse(("1997-07-01")));
@@ -104,21 +104,21 @@ public class Group1Application {
 		person3 = volunteerRepo.save(person3);
 
 		user.setUsername(person.getEmail());
-		user.setUid("aId0fTgOlKdrNpCd6IapWFnBC2D3");
+		user.setUid("ozfjYspwXJZKSIZRwoVEP8HIUZt2");
 		user.setTokenIsActive(false);
 		user.setVolunteerId(person.getId());
 		user.setRole(Role.USER);
 		userRepo.save(user);
 
 		user2.setUsername(person2.getEmail());
-		user2.setUid("Bq1SrD7WrHY4TNoBIY2Nw4v7K6x1");
+		user2.setUid("b3dmEAcCBNUJBOmnHWejCA07MP43");
 		user2.setTokenIsActive(false);
 		user2.setVolunteerId(person2.getId());
 		user2.setRole(Role.USER);
 		userRepo.save(user2);
 
 		admin.setUsername(person3.getEmail());
-		admin.setUid("YH70F63hN4gx3FgKW5yQJYP14az2");
+		admin.setUid("RgLApwCM4TTyyLdSKAPaFPyveSQ2");
 		admin.setTokenIsActive(false);
 		admin.setVolunteerId(person3.getId());
 		admin.setRole(Role.ADMIN);

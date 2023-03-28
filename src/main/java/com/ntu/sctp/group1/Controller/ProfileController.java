@@ -19,9 +19,9 @@ public class ProfileController {
     record Message(String message, boolean success) {}
 
     @GetMapping("/admin/volunteers/profiles/all")
-    public ResponseEntity<?> getAllProfiles() {
+    public ResponseEntity<?> getAllProfiles(@RequestParam String UID) {
         try {
-            return ResponseEntity.ok().body(profileService.getAllProfiles());
+            return ResponseEntity.ok().body(profileService.getAllProfiles(UID));
         } catch(NoProfileFoundExceptions ex) {
             ex.printStackTrace();
             return ResponseEntity.notFound().build();
