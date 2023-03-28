@@ -104,7 +104,7 @@ public class Group1Application {
 		person3 = volunteerRepo.save(person3);
 
 		user.setUsername(person.getEmail());
-		user.setUid("TeRD6WMM8fOJ3mr2Pavcf10sMpp2");
+		user.setUid("aId0fTgOlKdrNpCd6IapWFnBC2D3");
 		user.setTokenIsActive(false);
 		user.setVolunteerId(person.getId());
 		user.setRole(Role.USER);
@@ -136,9 +136,9 @@ public class Group1Application {
 
 		Program program1 = new Program();
 		Enrolment enrolment1 = new Enrolment();
-		program1.setTimeOfProgram("1000");
+		program1.setTimeOfProgram("1300hrs - 1800hrs");
 		program1.setName("Home Cleaning for Elderly");
-		program1.setDate(LocalDate.parse(("2025-07-01")));
+		program1.setDate(LocalDate.parse(("2023-04-01")));
 		program1.setVolunteersRequired(20);
 		program1.setNoOfVolunteers(0);
 		enrolment1.setProgram(program1);
@@ -148,9 +148,9 @@ public class Group1Application {
 
 		Program program2 = new Program();
 		Enrolment enrolment2 = new Enrolment();
-		program2.setTimeOfProgram("1200");
+		program2.setTimeOfProgram("0800hrs - 1200hrs");
 		program2.setName("TEACH");
-		program2.setDate(LocalDate.parse(("2025-08-01")));
+		program2.setDate(LocalDate.parse(("2023-04-02")));
 		program2.setVolunteersRequired(15);
 		program2.setNoOfVolunteers(0);
 		enrolment2.setProgram(program2);
