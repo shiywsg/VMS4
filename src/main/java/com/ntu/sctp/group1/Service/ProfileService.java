@@ -17,6 +17,10 @@ public class ProfileService {
     private ProfileRepository profileRepository;
 
     public List<Profile> getAllProfiles() throws NoProfileFoundExceptions {
+        // Get userId or a uid from the params
+        // Then user the id to find the user, using userRepo - findById
+        // check if user has role of "Admin" - i.e. if(user.getRole() === "Admin") throw error and return;
+       //  if(checkIfUserIsAdmin()) then continnue with the logic
         List<Profile> allProfiles = profileRepository.findAll();
         if(allProfiles.size() == 0) {
             throw new NoProfileFoundExceptions("There are no profiles found in repository");
@@ -55,4 +59,12 @@ public class ProfileService {
 
         return profileRepository.save(existingProfile);
     }
+
+//    public bolean checkIfUserIsAdmin(uid) {
+//        user = userRepo.findByUid();
+//        if(user.getRole() !== "ADMIM") {
+//           return false;
+//        }
+//        return true;
+//    }
 }
