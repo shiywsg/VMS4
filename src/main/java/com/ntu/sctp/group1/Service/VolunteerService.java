@@ -1,20 +1,14 @@
 package com.ntu.sctp.group1.Service;
 
 import com.ntu.sctp.group1.Exceptions.NoVolunteerFoundExceptions;
-import com.ntu.sctp.group1.entity.Profile;
-import com.ntu.sctp.group1.entity.Role;
-import com.ntu.sctp.group1.entity.UserCredentials;
-import com.ntu.sctp.group1.entity.Volunteer;
+import com.ntu.sctp.group1.entity.*;
 import com.ntu.sctp.group1.repository.ProfileRepository;
 import com.ntu.sctp.group1.repository.UserRepository;
 import com.ntu.sctp.group1.repository.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class VolunteerService {
@@ -135,6 +129,16 @@ public class VolunteerService {
         } else {
             throw new NoVolunteerFoundExceptions("Volunteer not found with ID: " + id);
         }
+    }
+
+    // NEWLY ADDED ON 29 Mar
+    public List<Enrolment> getEnrolmentsOfVolunteer(int volunteerId) throws NoVolunteerFoundExceptions {
+        Optional<Volunteer> volunteer = volunteerRepository.findById(volunteerId);
+        if(volunteer.isEmpty()) {
+            throw new NoVolunteerFoundExceptions("Volunteer not found with ID: " + volunteerId);
+        }
+        Set<Enrolment> enrolments  = volunteer.get().getEnrolments();
+        return new ArrayList<>(enrolments);
     }
 
 

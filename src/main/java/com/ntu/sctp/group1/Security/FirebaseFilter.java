@@ -37,8 +37,6 @@ public class FirebaseFilter extends OncePerRequestFilter {
             return;
         }
 
-
-
         // Get the actual Token string
         FirebaseToken decodedToken = null;
         String token = authHeader.replace("Bearer ", "");

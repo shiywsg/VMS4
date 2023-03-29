@@ -28,6 +28,12 @@ public class Program {
     @Column(name = "date")
     private LocalDate date;
 
+    @Column(name="description")
+    private String description;
+
+    @Column(name="photo")
+    private String photo = "";
+
     @Column(name = "time_of_program")
     private String timeOfProgram;
 

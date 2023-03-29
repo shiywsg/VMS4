@@ -61,13 +61,13 @@ public class AvailabilityController {
         }
     }
 
-
+    // Change to Date String - 29 Mar
     @PutMapping("/volunteers/availability/{volunteerId}")
     public ResponseEntity<?> updateAvailability(@PathVariable Integer volunteerId,
                                                 @RequestParam String date,
-                                                @RequestParam(required = true) Boolean isAvail) {
+                                                @RequestParam(required = true) String isAvail) {
         try {
-            LocalDate parsedDate = LocalDate.parse(date);
+            LocalDate parsedDate = LocalDate.parse((date));
             availabilityService.updateAvailability(volunteerId, parsedDate, isAvail);
             return ResponseEntity.ok().body(new Status("Availability updated successfully", true));
         } catch (NoVolunteerFoundExceptions ex) {
@@ -79,4 +79,21 @@ public class AvailabilityController {
         }
     }
 
+    // Added on 29 Mar
+    @DeleteMapping("/volunteers/availability/{volunteerId}")
+    public ResponseEntity<?> deleteAvailability(@PathVariable Integer volunteerId,
+                                                @RequestParam String date
+                                                ) {
+        try {
+            LocalDate parsedDate = LocalDate.parse((date));
+            availabilityService.deleteAvail(volunteerId, parsedDate);
+            return ResponseEntity.ok().body(new Status("Availability deleted successfully", true));
+        } catch (NoVolunteerFoundExceptions ex) {
+            ex.printStackTrace();
+            return ResponseEntity.notFound().build();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));
+        }
+    }
 }

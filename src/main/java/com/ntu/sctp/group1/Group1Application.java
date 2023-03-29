@@ -138,7 +138,9 @@ public class Group1Application {
 		Enrolment enrolment1 = new Enrolment();
 		program1.setTimeOfProgram("1300hrs - 1800hrs");
 		program1.setName("Home Cleaning for Elderly");
+		program1.setPhoto("https://assets.avenueone.sg/wp-content/uploads/2019/11/where-to-volunteer-in-Singapore-Willing-Hearts.jpeg");
 		program1.setDate(LocalDate.parse(("2023-04-01")));
+		program1.setDescription("Bring joy to our seniors!");
 		program1.setVolunteersRequired(20);
 		program1.setNoOfVolunteers(0);
 		enrolment1.setProgram(program1);
@@ -149,7 +151,9 @@ public class Group1Application {
 		Program program2 = new Program();
 		Enrolment enrolment2 = new Enrolment();
 		program2.setTimeOfProgram("0800hrs - 1200hrs");
+		program2.setPhoto("https://www.ahealingheartmedical.com/assets/img/team/A-Healing-Heart-Medical-Team.webp");
 		program2.setName("TEACH");
+		program2.setDescription("Share your knowledge with children!");
 		program2.setDate(LocalDate.parse(("2023-04-02")));
 		program2.setVolunteersRequired(15);
 		program2.setNoOfVolunteers(0);
@@ -158,8 +162,36 @@ public class Group1Application {
 		enrolment2.setDate(program2.getDate());
 		enrolment2.setVolunteers(new HashSet<>());
 
-		programRepo.saveAll(List.of(program1, program2));
-		enrolmentRepository.saveAll(List.of(enrolment1, enrolment2));
+		Program program3 = new Program();
+		Enrolment enrolment3 = new Enrolment();
+		program3.setTimeOfProgram("0800hrs - 1200hrs");
+		program3.setPhoto("https://wayd-sg.s3.ap-southeast-1.amazonaws.com/img/2020/08/20002802/20200817_Willing-Hearts_CCH9667-scaled.jpg");
+		program3.setName("Soup Kitchen");
+		program3.setDate(LocalDate.parse(("2023-04-03")));
+		program3.setDescription("Hone your cooking skills and spread the joy to others!");
+		program3.setVolunteersRequired(15);
+		program3.setNoOfVolunteers(0);
+		enrolment3.setProgram(program3);
+		enrolment3.setTimeOfProgram(program3.getTimeOfProgram());
+		enrolment3.setDate(program3.getDate());
+		enrolment3.setVolunteers(new HashSet<>());
+
+		Program program4 = new Program();
+		Enrolment enrolment4 = new Enrolment();
+		program4.setTimeOfProgram("0800hrs - 1200hrs");
+		program4.setPhoto("https://www.sassymamasg.com/wp-content/uploads/2018/07/Singapore-Childrens-association-kids-charity-walk.jpg");
+		program4.setName("Exploration");
+		program4.setDate(LocalDate.parse(("2023-04-04")));
+		program4.setDescription("Bring the children to various places of interests");
+		program4.setVolunteersRequired(15);
+		program4.setNoOfVolunteers(0);
+		enrolment4.setProgram(program4);
+		enrolment4.setTimeOfProgram(program4.getTimeOfProgram());
+		enrolment4.setDate(program4.getDate());
+		enrolment4.setVolunteers(new HashSet<>());
+
+		programRepo.saveAll(List.of(program1, program2, program3, program4));
+		enrolmentRepository.saveAll(List.of(enrolment1, enrolment2, enrolment3, enrolment4));
 
 //		Availability avail = new Availability();
 //		avail.setDate(LocalDate.parse(("2025-07-01")));

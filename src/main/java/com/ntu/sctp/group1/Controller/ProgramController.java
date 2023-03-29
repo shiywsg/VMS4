@@ -20,7 +20,7 @@ public class ProgramController {
     }
 
     @GetMapping("/admin/programs")
-    public ResponseEntity<?> getAllVolunteers() {
+    public ResponseEntity<?> getAllPrograms() {
         try {
             return ResponseEntity.ok().body(programService.getAllPrograms());
         } catch (NoProgramFoundExceptions ex) {

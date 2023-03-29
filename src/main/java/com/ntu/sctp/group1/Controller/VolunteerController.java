@@ -113,4 +113,16 @@ import java.util.Map;
                 return ResponseEntity.badRequest().body(new Message(ex.getMessage(), false));
             }
         }
+
+        // ADDED ON 29 MAR
+        @GetMapping("/volunteers/{id}/enrolments")
+        public ResponseEntity<?> findEnrolmentsOfVolunteer(@PathVariable int id) {
+            try {
+                return ResponseEntity.ok().body(volunteerService.getEnrolmentsOfVolunteer(id));
+            } catch(NoVolunteerFoundExceptions ex) {
+                return ResponseEntity.notFound().build();
+            } catch (Exception ex) {
+                return ResponseEntity.internalServerError().body(new Message(ex.getMessage(), false));
+            }
+        }
     }
