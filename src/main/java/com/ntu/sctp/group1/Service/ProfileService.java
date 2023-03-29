@@ -35,6 +35,7 @@ public class ProfileService {
         return null;
     }
 
+
     public Profile getProfileById(Integer id) throws NoProfileFoundExceptions {
         Optional<Profile> profile = profileRepository.findByVolunteerId(id);
         if (profile.isPresent()) {
@@ -72,4 +73,6 @@ public class ProfileService {
         if (userOptional.isEmpty()) return false;
         return userOptional.get().getRole().equals(Role.ADMIN);
     }
+
 }
+
