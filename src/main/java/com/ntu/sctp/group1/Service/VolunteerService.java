@@ -47,22 +47,32 @@ public class VolunteerService {
    
    
     public List<Volunteer> searchByParams (Map <String, String> params) throws NoVolunteerFoundExceptions {
+        System.out.println(params);
         List<Volunteer> volunteers = volunteerRepository.findAll();
         if (volunteers.size() == 0) {
             throw new NoVolunteerFoundExceptions("No volunteers meeting this criteria found");
         }
         List<Volunteer> filteredList = new ArrayList<>();
-        if (params.containsKey("experience")) {
-            filteredList = volunteers.stream()
-                            .filter((volunteer) -> volunteer.getEducation().equalsIgnoreCase(params.get("education")) ||
-                                                   volunteer.getLanguage().equalsIgnoreCase(params.get("language")) ||
-                                                   volunteer.getPastExperience().contains(params.get("experience")))
-                            .toList();
+
+        if(params.isEmpty() || (params.get("education").isEmpty() && params.get("language").isEmpty() && params.get("experience").isEmpty())) {
+            filteredList = volunteers;
         } else {
-            filteredList = volunteers.stream()
-                            .filter((volunteer) -> volunteer.getEducation().equalsIgnoreCase(params.get("education")) ||
-                                                   volunteer.getLanguage().equalsIgnoreCase(params.get("language")))
-                            .toList();
+            if (params.containsKey("experience")) {
+                filteredList = volunteers.stream()
+                        .filter((volunteer) -> volunteer.getEducation().equalsIgnoreCase(params.get("education")) ||
+                                volunteer.getLanguage().equalsIgnoreCase(params.get("language")) ||
+                                volunteer.getLanguage2().equalsIgnoreCase(params.get("language")) ||
+                                volunteer.getLanguage3().equalsIgnoreCase(params.get("language")) ||
+                                volunteer.getPastExperience().contains(params.get("experience")))
+                        .toList();
+            } else {
+                filteredList = volunteers.stream()
+                        .filter((volunteer) -> volunteer.getEducation().equalsIgnoreCase(params.get("education")) ||
+                                volunteer.getLanguage().equalsIgnoreCase(params.get("language")) ||
+                                volunteer.getLanguage2().equalsIgnoreCase(params.get("language")) ||
+                                volunteer.getLanguage3().equalsIgnoreCase(params.get("language")))
+                        .toList();
+            }
         }
 
         if(filteredList.size() == 0) {

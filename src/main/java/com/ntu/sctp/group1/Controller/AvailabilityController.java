@@ -96,4 +96,16 @@ public class AvailabilityController {
             return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));
         }
     }
+
+    // Added on 31 Mar
+    @GetMapping("/volunteers/availability/all")
+    public ResponseEntity<?> getAllAvailabilities () {
+        try {
+            return ResponseEntity.ok().body(availabilityService.getAllAvailabilities());
+        } catch(NoAvailabilityFoundExceptions ex) {
+            return ResponseEntity.notFound().build();
+        } catch(Exception ex) {
+            return ResponseEntity.internalServerError().body(new Status(ex.getMessage(), false));
+        }
+    }
 }

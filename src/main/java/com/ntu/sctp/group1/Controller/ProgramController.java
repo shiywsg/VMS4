@@ -1,5 +1,6 @@
 package com.ntu.sctp.group1.Controller;
 
+import com.ntu.sctp.group1.DataTransferObject.ProgramDto;
 import com.ntu.sctp.group1.Exceptions.NoProgramFoundExceptions;
 import com.ntu.sctp.group1.Service.ProgramService;
 import com.ntu.sctp.group1.entity.Program;
@@ -46,7 +47,7 @@ public class ProgramController {
     }
 
     @PostMapping("/admin/newprogram")
-    public ResponseEntity<?> createProgram(@RequestBody Program newProgram) {
+    public ResponseEntity<?> createProgram(@RequestBody ProgramDto newProgram) {
         try {
             Program program = programService.createProgram(newProgram);
             return ResponseEntity.ok().body(program);
@@ -59,7 +60,7 @@ public class ProgramController {
     }
 
     @PutMapping("/admin/programs/{id}")
-    public ResponseEntity<?> updateProgram(@PathVariable Integer id, @RequestBody Program updatedProgram) {
+    public ResponseEntity<?> updateProgram(@PathVariable Integer id, @RequestBody ProgramDto updatedProgram) {
         try {
             Program program = programService.updateProgram(id, updatedProgram);
             return ResponseEntity.ok(program);

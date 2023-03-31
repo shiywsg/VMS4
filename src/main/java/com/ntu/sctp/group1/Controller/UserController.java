@@ -8,6 +8,7 @@ import com.ntu.sctp.group1.Service.UserService;
 import com.ntu.sctp.group1.Service.VolunteerService;
 import com.ntu.sctp.group1.entity.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,7 @@ public class UserController {
             return ResponseEntity.notFound().build();
         } catch(UnauthorisedSignInException ex) {
             ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Status(ex.getMessage(), false));
+            return new ResponseEntity<>(new Status(ex.getMessage(), false), HttpStatus.UNAUTHORIZED);
         } catch(Exception ex) {
             ex.printStackTrace();
             return ResponseEntity.internalServerError().body("Something is wrong with the server");
@@ -49,7 +50,7 @@ public class UserController {
             return ResponseEntity.badRequest().body(new Status("Uid is invalid!", false));
         } catch(UnauthorisedSignInException ex) {
             ex.printStackTrace();
-            return ResponseEntity.badRequest().body(new Status("You are not authorised to access!", false));
+            return new ResponseEntity<>(new Status(ex.getMessage(), false),HttpStatus.FORBIDDEN);
         } catch(Exception ex) {
             ex.printStackTrace();
             return ResponseEntity.internalServerError().body(new Status("Something is wrong with the server!", false));

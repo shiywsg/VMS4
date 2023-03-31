@@ -1,5 +1,6 @@
 package com.ntu.sctp.group1.Service;
 
+import com.ntu.sctp.group1.DataTransferObject.ProgramDto;
 import com.ntu.sctp.group1.Exceptions.NoProgramFoundExceptions;
 import com.ntu.sctp.group1.entity.Enrolment;
 import com.ntu.sctp.group1.entity.Program;
@@ -8,6 +9,7 @@ import com.ntu.sctp.group1.repository.ProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -40,31 +42,43 @@ public class ProgramService {
     }
 
 
-    public Program createProgram(Program program) throws NoProgramFoundExceptions {
+    public Program createProgram(ProgramDto program) throws NoProgramFoundExceptions {
         if (program.getName().isEmpty()) {
             throw new NoProgramFoundExceptions("Program name cannot be empty");
         }
-        Program savedProgram = programRepository.save(program);
+        LocalDate reformatDate = LocalDate.parse((program.getDate()));
+        Program newProg = new Program();
+        newProg.setDescription(program.getDescription());
+        newProg.setDate(reformatDate);
+        newProg.setPhoto(program.getPhoto());
+        newProg.setTimeOfProgram(program.getTimeOfProgram());
+        newProg.setName(program.getName());
+        newProg.setVolunteersRequired(program.getVolunteersRequired());
+        newProg.setNoOfVolunteers(program.getNoOfVolunteers());
+        Program savedProgram = programRepository.save(newProg);
 
         // Create an empty Enrolment associated with the saved program
         Enrolment enrolment = new Enrolment();
         enrolment.setProgram(savedProgram);
-        enrolment.setDate(null);
-        enrolment.setTimeOfProgram("");
+        enrolment.setDate(savedProgram.getDate());
+        enrolment.setTimeOfProgram(savedProgram.getTimeOfProgram());
         enrolment.setVolunteers(new HashSet<>());
         enrolmentRepository.save(enrolment);
 
         return savedProgram;
     }
 
-    public Program updateProgram(Integer id, Program updatedProgram) throws NoProgramFoundExceptions {
+    public Program updateProgram(Integer id, ProgramDto updatedProgram) throws NoProgramFoundExceptions {
         Optional<Program> findProgram = programRepository.findById(id);
 
         if (findProgram.isPresent()) {
+            LocalDate reformatDate = LocalDate.parse((updatedProgram.getDate()));
             Program existingProgram = findProgram.get();
             existingProgram.setName(updatedProgram.getName());
-            existingProgram.setDate(updatedProgram.getDate());
+            existingProgram.setDate(reformatDate);
             existingProgram.setTimeOfProgram(updatedProgram.getTimeOfProgram());
+            existingProgram.setDescription(updatedProgram.getDescription());
+            existingProgram.setPhoto(updatedProgram.getPhoto());
             existingProgram.setNoOfVolunteers(updatedProgram.getNoOfVolunteers());
             existingProgram.setVolunteersRequired(updatedProgram.getVolunteersRequired());
 

@@ -6,6 +6,7 @@ com/ntu/sctp/group1/DataTransferObject/EnrolEditDto.class
 com/ntu/sctp/group1/Controller/ProfileController.class
 com/ntu/sctp/group1/entity/Program.class
 com/ntu/sctp/group1/Controller/EnrolmentController$Status.class
+com/ntu/sctp/group1/DataTransferObject/ProgramDto.class
 com/ntu/sctp/group1/Exceptions/NoVolunteerFoundExceptions.class
 com/ntu/sctp/group1/Controller/UserController.class
 com/ntu/sctp/group1/entity/Enrolment.class
