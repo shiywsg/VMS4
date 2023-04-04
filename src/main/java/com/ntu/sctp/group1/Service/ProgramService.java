@@ -70,10 +70,12 @@ public class ProgramService {
 
     public Program updateProgram(Integer id, ProgramDto updatedProgram) throws NoProgramFoundExceptions {
         Optional<Program> findProgram = programRepository.findById(id);
+        Optional<Enrolment> findEnrolment = enrolmentRepository.findByProgramId(id);
 
-        if (findProgram.isPresent()) {
+        if (findProgram.isPresent() && findEnrolment.isPresent()) {
             LocalDate reformatDate = LocalDate.parse((updatedProgram.getDate()));
             Program existingProgram = findProgram.get();
+            Enrolment existingEnrolment = findEnrolment.get();
             existingProgram.setName(updatedProgram.getName());
             existingProgram.setDate(reformatDate);
             existingProgram.setTimeOfProgram(updatedProgram.getTimeOfProgram());
@@ -81,7 +83,9 @@ public class ProgramService {
             existingProgram.setPhoto(updatedProgram.getPhoto());
             existingProgram.setNoOfVolunteers(updatedProgram.getNoOfVolunteers());
             existingProgram.setVolunteersRequired(updatedProgram.getVolunteersRequired());
-
+            existingEnrolment.setDate(reformatDate);
+            existingEnrolment.setTimeOfProgram(updatedProgram.getTimeOfProgram());
+            enrolmentRepository.save(existingEnrolment);
             return programRepository.save(existingProgram);
         } else {
 

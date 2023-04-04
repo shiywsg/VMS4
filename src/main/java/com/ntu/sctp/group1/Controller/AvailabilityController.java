@@ -68,8 +68,7 @@ public class AvailabilityController {
                                                 @RequestParam(required = true) String isAvail) {
         try {
             LocalDate parsedDate = LocalDate.parse((date));
-            availabilityService.updateAvailability(volunteerId, parsedDate, isAvail);
-            return ResponseEntity.ok().body(new Status("Availability updated successfully", true));
+            return ResponseEntity.ok().body(availabilityService.updateAvailability(volunteerId, parsedDate, isAvail));
         } catch (NoVolunteerFoundExceptions ex) {
             ex.printStackTrace();
             return ResponseEntity.notFound().build();

@@ -87,7 +87,7 @@ public class AvailabilityService {
     }
 
 
-    public void updateAvailability(Integer volunteerId, LocalDate date, String isAvail)
+    public Availability updateAvailability(Integer volunteerId, LocalDate date, String isAvail)
             throws NoVolunteerFoundExceptions, NoAvailabilityFoundExceptions {
         Volunteer volunteer = volunteerRepository.findById(volunteerId)
                 .orElseThrow(() -> new NoVolunteerFoundExceptions("No volunteer found with the given ID: " + volunteerId));
@@ -96,7 +96,7 @@ public class AvailabilityService {
                 .orElseThrow(() -> new NoAvailabilityFoundExceptions("No availability record found for the given volunteer and date"));
         boolean avail = isAvail.equalsIgnoreCase("false") ? false : true;
         availability.setAvail(avail);
-        availabilityRepo.save(availability);
+        return availabilityRepo.save(availability);
     }
 
     // Added on 29 Mar
