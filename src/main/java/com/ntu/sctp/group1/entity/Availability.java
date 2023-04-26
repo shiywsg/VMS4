@@ -35,6 +35,10 @@ public class Availability {
     @Column(name="created_at", updatable= false)
     Timestamp createdAt = new Timestamp(new Date().getTime());
 
+    @ManyToOne
+    @JoinColumn(name = "volunteer_id", referencedColumnName = "id")
+    private Volunteer volunteer;
+
     public Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -43,8 +47,6 @@ public class Availability {
     }
 
 
-    @ManyToOne
-    @JoinColumn(name = "volunteer_id", referencedColumnName = "id")
-    private Volunteer volunteer;
+
 
 }

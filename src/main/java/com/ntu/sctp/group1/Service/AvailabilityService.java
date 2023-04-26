@@ -31,9 +31,10 @@ public class AvailabilityService {
         if(findVolunteer.isEmpty()) {
             throw new NoVolunteerFoundExceptions("No volunteer found under id " + volunteerId);
         }
-        if(findVolunteer.get().getAvailabilities().size() == 0) {
-            throw new NoAvailabilityFoundExceptions("Volunteer had not set any availabilities as yet!");
-        }
+        // Removed on 25 Apr
+//        if(findVolunteer.get().getAvailabilities().size() == 0) {
+//            throw new NoAvailabilityFoundExceptions("Volunteer had not set any availabilities as yet!");
+//        }
 
         List<Availability> avails = findVolunteer.get().getAvailabilities();
         avails.sort(Comparator.comparing(Availability::getDate));

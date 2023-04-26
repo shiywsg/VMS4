@@ -56,9 +56,6 @@ import java.util.Map;
         public ResponseEntity<List<Volunteer>> searchByParams (@RequestParam Map<String, String> params) {
             try {
                 return ResponseEntity.ok().body(volunteerService.searchByParams(params));
-            } catch (NoVolunteerFoundExceptions ex) {
-                ex.printStackTrace();
-                return ResponseEntity.notFound().build();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 return ResponseEntity.badRequest().body(null);

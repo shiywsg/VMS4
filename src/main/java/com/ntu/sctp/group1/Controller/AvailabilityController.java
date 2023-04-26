@@ -48,11 +48,12 @@ public class AvailabilityController {
         }
     }
 
+    // Removed availabilityException - 25 Apr
     @GetMapping("/volunteers/availabilities/{volunteerId}")
     public ResponseEntity<?> getAvailabilitiesOfAVolunteer(@PathVariable Integer volunteerId) {
         try {
             return ResponseEntity.ok().body(availabilityService.getAvailabilitiesOfAVolunteer(volunteerId));
-        } catch(NoVolunteerFoundExceptions | NoAvailabilityFoundExceptions ex) {
+        } catch(NoVolunteerFoundExceptions ex) {
             ex.printStackTrace();
             return ResponseEntity.notFound().build();
         } catch(Exception ex) {

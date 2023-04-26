@@ -74,10 +74,10 @@ public class VolunteerService {
                         .toList();
             }
         }
-
-        if(filteredList.size() == 0) {
-            throw new NoVolunteerFoundExceptions("No results found!");
-        }
+        // Removed on 26 Apr
+//        if(filteredList.size() == 0) {
+//            throw new NoVolunteerFoundExceptions("No results found!");
+//        }
 
         return filteredList;
     }
