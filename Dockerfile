@@ -6,3 +6,4 @@ COPY src ./src
 RUN ./mvnw install
 CMD ["./mvnw", "spring-boot:run"]
 
+
