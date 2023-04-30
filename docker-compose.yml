@@ -1,6 +1,8 @@
 version: '3.8'
 services:
   app:
+    environment:
+      - DOCKER_DEFAULT_PLATFORM=linux/amd64
     container_name: vms-backend
     build:
       dockerfile: ./Dockerfile
@@ -8,4 +10,3 @@ services:
       - "8080:8080"
     volumes:
       - .:/app
-
