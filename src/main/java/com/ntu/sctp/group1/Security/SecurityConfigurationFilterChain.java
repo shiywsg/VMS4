@@ -27,6 +27,8 @@ public class SecurityConfigurationFilterChain {
                 .authorizeHttpRequests()
                 .requestMatchers(new AntPathRequestMatcher("/h2/**"))
                 .permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/actuator/**"))
+                .permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
