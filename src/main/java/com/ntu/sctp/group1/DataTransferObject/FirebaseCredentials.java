@@ -28,4 +28,6 @@ public class FirebaseCredentials extends InputStream {
     public int read() throws IOException {
         return 0;
     }
+
 }
+

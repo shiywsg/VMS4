@@ -16,6 +16,7 @@ com/ntu/sctp/group1/repository/EnrolmentRepository.class
 com/ntu/sctp/group1/repository/VolunteerRepository.class
 com/ntu/sctp/group1/entity/Profile.class
 com/ntu/sctp/group1/Exceptions/NoAvailabilityFoundExceptions.class
+com/ntu/sctp/group1/DataTransferObject/EnrolEditDto$FirebaseCredentials.class
 com/ntu/sctp/group1/entity/Availability.class
 com/ntu/sctp/group1/Service/UserService.class
 com/ntu/sctp/group1/repository/UserRepository.class
@@ -43,6 +44,7 @@ com/ntu/sctp/group1/Controller/ProgramController.class
 com/ntu/sctp/group1/DataTransferObject/UserSignInDto.class
 com/ntu/sctp/group1/Group1Application$1.class
 com/ntu/sctp/group1/entity/UserCredentials.class
+com/ntu/sctp/group1/DataTransferObject/FirebaseCredentials.class
 com/ntu/sctp/group1/Security/SecurityConfigurationFilterChain.class
 com/ntu/sctp/group1/repository/ProgramRepository.class
 com/ntu/sctp/group1/repository/ProfileRepository.class

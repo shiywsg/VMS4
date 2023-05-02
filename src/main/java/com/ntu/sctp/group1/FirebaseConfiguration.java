@@ -65,7 +65,6 @@ public class FirebaseConfiguration {
         firebaseCredentials.setAuth_provider_x509_cert_url(auth_provider_x509_cert_url);
         firebaseCredentials.setClient_x509_cert_url(client_x509_cert_url);
 
-
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = mapper.writeValueAsString(firebaseCredentials);
 
@@ -79,6 +78,7 @@ public class FirebaseConfiguration {
 
 
         return FirebaseAuth.getInstance(firebaseApp);
+
 
     }
 }
