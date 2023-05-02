@@ -7,7 +7,7 @@ COPY src ./src
 RUN ./mvnw install
 CMD ["./mvnw", "spring-boot:run"]
 
-
+#test
 # FROM eclipse-temurin:17-jdk-jammy
 # VOLUME /app
 # COPY target/group-1-0.0.1-SNAPSHOT.jar vms.jar
