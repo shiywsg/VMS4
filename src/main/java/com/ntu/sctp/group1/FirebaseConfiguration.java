@@ -1,5 +1,6 @@
 package com.ntu.sctp.group1;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -49,6 +50,9 @@ public class FirebaseConfiguration {
 //    @Value("classpath:service-account.json")
 //    Resource serviceAccount;
 
+
+
+
     @Bean
     public FirebaseAuth firebaseAuth() throws IOException {
 
@@ -64,6 +68,8 @@ public class FirebaseConfiguration {
         firebaseCredentials.setToken_uri(token_uri);
         firebaseCredentials.setAuth_provider_x509_cert_url(auth_provider_x509_cert_url);
         firebaseCredentials.setClient_x509_cert_url(client_x509_cert_url);
+
+
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = mapper.writeValueAsString(firebaseCredentials);
