@@ -13,6 +13,7 @@
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/DataTransferObject/EnrolDto.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/DataTransferObject/ProgramDto.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoEnrolmentFoundExceptions.java
+/Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/UnauthorisedRoleExceptions.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/repository/ProfileRepository.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/Exceptions/NoProgramFoundExceptions.java
 /Users/hokitjonathan/Desktop/SCTP/SpringBoot/project/Volunteer_Management_System_VMS/src/main/java/com/ntu/sctp/group1/DataTransferObject/UserSignInDto.java

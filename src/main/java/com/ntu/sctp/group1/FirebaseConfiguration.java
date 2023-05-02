@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 
@@ -47,9 +48,8 @@ public class FirebaseConfiguration {
     @Value("${client_x509_cert_url}")
     private String client_x509_cert_url;
 
-//    @Value("classpath:service-account.json")
-//    Resource serviceAccount;
-
+    @Value("classpath:service-account.json")
+    Resource serviceAccount;
 
 
 
