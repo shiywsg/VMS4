@@ -14,9 +14,4 @@ CMD ["./mvnw", "spring-boot:run"]
 # COPY target/group-1-0.0.1-SNAPSHOT.jar vms.jar
 # ENTRYPOINT ["java","-jar","vms.jar"]
 
-
-
-
-
-
->>>>>>> development-branch-jonathan
+#>>>>>>> development-branch-jonathan
