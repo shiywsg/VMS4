@@ -1,9 +1,5 @@
 package com.ntu.sctp.group1;
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicSessionCredentials;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.ntu.sctp.group1.entity.*;
 import com.ntu.sctp.group1.repository.*;
 import jakarta.annotation.PostConstruct;
@@ -41,10 +37,10 @@ public class Group1Application {
 	@Autowired
 	UserRepository userRepo;
 
-	BasicSessionCredentials awsCreds = new BasicSessionCredentials("access_key_id", "secret_key_id", "session_token");
-	AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
-			.withCredentials(new AWSStaticCredentialsProvider(awsCreds))
-			.build();
+//	BasicSessionCredentials awsCreds = new BasicSessionCredentials("access_key_id", "secret_key_id", "session_token");
+//	AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+//			.withCredentials(new AWSStaticCredentialsProvider(awsCreds))
+//			.build();
 
 	public static void main(String[] args) {
 		SpringApplication.run(Group1Application.class, args);
